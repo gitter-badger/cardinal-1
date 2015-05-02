@@ -1,0 +1,17 @@
+#loginWrapper {
+    height: 100%;
+    /*background-color: blue;*/
+}
+
+#loginWrapper > md-card > md-toolbar {
+    color: white;
+}
+
+#loginWrapper > md-card {
+    background-color: white;
+    min-width: 350px;
+}
+
+#loginButton {
+    width: 100%;
+}

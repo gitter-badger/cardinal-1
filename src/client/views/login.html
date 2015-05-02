@@ -1,0 +1,26 @@
+<md-content id="loginWrapper" layout-padding layout-fill layout="column" layout-align="center center">
+    <md-card>
+        <md-toolbar class="md-primary">
+            <h1 class="md-toolbar-tools" >Login or Sign Up</h1>
+        </md-toolbar>
+        <md-card-content>
+            <md-input-container>
+                <label>Email</label>
+                <input type="text" ng-model="user.username" />
+                <div ng-messages="user.$error">
+                    <div ng-message="unReq">Please enter a username</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Password</label>
+                <input type="password" ng-model="user.password" />
+                <div ng-messages="user.$error">
+                    <div ng-message="passReq">Please enter a password</div>
+                </div>
+            </md-input-container>
+            <div class="md-actions" layout="row" layout-align="end center">
+                <md-button id="loginButton" class="" ng-click="login()">login</md-button>
+            </div>
+        </md-card-content>
+    </md-card>
+</md-content>
