@@ -1,7 +1,7 @@
 <div class="full-height-min">
     <md-content layout="column">
         <md-content layout="row" class="full-height-min">
-            <div class="sidenav" layout="vertical">
+            <div class="sidenav" layout="vertical" ng-controller="navBarController">
                 <md-sidenav layout-fill flex class="md-sidenav-left md-whiteframe-z2 sidenav" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
                     <md-toolbar class="md-theme-indigo">
                         Welcome back {{ user.username }}!

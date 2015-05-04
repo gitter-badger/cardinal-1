@@ -17,15 +17,14 @@ app.controller('loginController', function($scope, $http, $location, authService
             $scope.user.$error.passReq = false;
         }
 
-        console.log($scope.user);
         $http.post('/login', $scope.user).success(function(data){
             console.log(data);
-            if(data !== false) {
+            if(data !== "FALSE") {
                 $scope.auth = true;
                 authService.user = $scope.user;
                 $location.url("dashboard");
             } else {
-                $scope.auth = false;
+                
             }
         });
     };

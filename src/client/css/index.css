@@ -6,3 +6,7 @@
 .sidenav {
     height: 100%;
 }
+
+.warning-msg {
+    color: red;
+}
