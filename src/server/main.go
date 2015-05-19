@@ -3,20 +3,13 @@ package main
 import (
     "fmt"
     "net/http"
-    "github.com/gorilla/mux"
     "time"
     "os"
-    "encoding/json"
-    // "io/ioutil"
+    "log"
+    "github.com/gorilla/mux"
 )
 
-type User struct {
-    Username string
-    Password string
-}
-
-
-var logger = make(chan string)
+var logger log.Logger
 
 func errCheck(err error) {
     if err != nil {
@@ -24,7 +17,7 @@ func errCheck(err error) {
     }
 }
 
-func log(logger chan string) {
+func getLogFile() *os.File {
     var logFile *os.File
     var fileErr error
     filename := "logs/" + time.Now().Format("01-02-2006") + "-http.log"
@@ -49,26 +42,7 @@ func log(logger chan string) {
         }
     }
 
-    defer logFile.Close()
-
-    for {
-        message := <- logger
-        logFile.WriteString(time.Now().Format("Jan _2 15:04:05") + " " + message)
-    }
-}
-
-func loginHandler(w http.ResponseWriter, r *http.Request) {
-    decoder := json.NewDecoder(r.Body)
-    var u User
-    err := decoder.Decode(&u)
-    errCheck(err)
-    // Do Query stuff here
-    // This is fake auth
-    if u.Username == "ChasingLogic" && u.Password == "test" {
-        w.Write([]byte("TRUE"))
-    } else {
-        w.Write([]byte("FALSE"))
-    }
+    return logFile
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
@@ -77,16 +51,18 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
     fmt.Println("Server starting")
+    logFile = getLogFile()
+    mwriter := io.MultiWriter(os.Stdout, logFile)
 
-    go log(logger)
-
+    logger = log.New(mwriter, " [CARD-MANAGER] ", log.Ldate|log.Ltime)
     router := mux.NewRouter()
-    router.HandleFunc("/", indexHandler)
-    router.HandleFunc("/login", loginHandler)
+
+    router.HandleFunc("/login", loginHandler).Methods("POST")
+    router.HandleFunc("/signup", signupHandler).Methods("POST")
+    router.HandleFunc("/")
 
     router.PathPrefix("/").Handler(http.FileServer(http.Dir("../client/")))
 
     logger <- "Server ready"
-
-    http.ListenAndServe(":8080", router)
+    m.Run()
 }
