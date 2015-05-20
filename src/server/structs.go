@@ -1,10 +1,12 @@
 package main
 
-import "encoding/json"
+type Carder interface {
+    GetId() string
+}
 
 type User struct {
     Username string
-    Password string
+    Password []byte
     DashItems []DashItem
     Collections []Collection
 }
@@ -26,6 +28,7 @@ type ForeignName struct {
 }
 
 type HearthStoneCard struct {
+    Id string
     Name string
     Cost int
     Type string
@@ -38,14 +41,16 @@ type HearthStoneCard struct {
     Attack int
     Health int
     Collectible bool
-    Id string
     Elite bool
     PlayerClass string
     InPlayText string
     Durability int
     HowToGet string
     HowToGetGold string
-    Faction string
+}
+
+func (h HearthStoneCard) GetId() string {
+    return h.Id
 }
 
 type MagicCard struct {
@@ -67,12 +72,16 @@ type MagicCard struct {
     ImageNames []string
 }
 
+func (m MagicCard) GetId() string {
+    return m.Id
+}
+
 type Collection struct {
     Name string
     Game string
     IsMain bool
     Owner User
-    Cards []interface{}
+    Cards []Carder
 }
 
 type DashItem struct {
