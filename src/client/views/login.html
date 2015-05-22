@@ -1,30 +1,75 @@
-<md-content id="loginWrapper" layout-padding layout-fill layout="column" layout-align="center center">
-    <md-card>
-        <md-toolbar class="md-primary md-hue-1">
-            <div class="md-toolbar-tools">
-                <h1 style="text-align: center" flex>Login or Sign Up</h1>
-            </div>
-        </md-toolbar>
-        <md-card-content>
-            <md-input-container>
-                <label>Email</label>
-                <input type="text" ng-model="user.username" />
-                <div style="color:red" ng-messages="user.$error">
-                    <div ng-message="unReq">Please enter a username</div>
+<md-content id="loginWrapper" layout-padding="layout-padding" layout-fill="layout-fill"
+    layout="row" layout-align="center center" class="md-padding">
+    <md-tabs md-dynamic-height="md-dynamic-height" md-border-bottom="md-border-bottom" class="md-primary login-tabs">
+
+        <md-tab label="log in">
+
+            <md-content class="md-padding">
+
+                <md-input-container>
+                    <label>Username</label>
+                    <input type="text" ng-model="user.username"/>
+                    <div style="color:red" ng-messages="user.$error">
+                        <div ng-message="unReq">Please enter a username</div>
+                        <div ng-message="unTaken">Sorry, that username is already taken.</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Password</label>
+                    <input type="password" ng-model="user.password"/>
+                    <div style="color:red; height: 50px" ng-messages="user.$error">
+                        <div ng-message="passReq">Please enter a password</div>
+                        <div ng-message="loginFailed">That Username/Password combo was not recognized. Don't have an account? Then click sign up at the top It's free and easy!</div>
+                    </div>
+                </md-input-container>
+
+                <div layout="row" layout-align="center end" class="md-actions">
+                    <md-button ng-click="login()" class="login-button">Login</md-button>
                 </div>
-            </md-input-container>
-            <md-input-container>
-                <label>Password</label>
-                <input type="password" ng-model="user.password" />
-                <div style="color:red" ng-messages="user.$error">
-                    <div ng-message="passReq">Please enter a password</div>
+
+            </md-content>
+
+        </md-tab>
+
+        <md-tab label="sign up">
+
+            <md-content class="md-padding">
+
+                <md-input-container>
+                    <label>Username</label>
+                    <input type="text" ng-model="user.username"/>
+                    <div style="color:red" ng-messages="user.$error">
+                        <div ng-message="unReq">Please enter a username</div>
+                        <div ng-message="unTaken">That username is taken</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Email</label>
+                    <input type="text" ng-model="user.email"/>
+                    <div style="color:red" ng-messages="user.$error">
+                        <div ng-message="emailReq">Please enter a valid email</div>
+                        <div ng-message="unTaken">That email is taken</div>
+                    </div>
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Password</label>
+                    <input type="password" ng-model="user.password"/>
+                    <div style="color:red" ng-messages="user.$error">
+                        <div ng-message="passReq">Please enter a password</div>
+                    </div>
+                </md-input-container>
+
+                <div layout="row" layout-align="center end" class="md-actions">
+                    <md-button ng-click="signup()" class="md-accent login-button">Sign Up</md-button>
                 </div>
-            </md-input-container>
-            <div class="md-actions" layout="row" layout-align="space-between center">
-                <md-button id="signUpButton" class="md-raised md-accent" ng-click="signUp()">Sign Up</md-button>
-                <h4>OR</h4>
-                <md-button id="loginButton" class="md-raised" ng-click="login()">login</md-button>
-            </div>
-        </md-card-content>
-    </md-card>
+
+            </md-content>
+
+        </md-tab>
+
+    </md-tabs>
+
 </md-content>
