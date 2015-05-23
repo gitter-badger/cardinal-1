@@ -1,31 +1,53 @@
 package main
 
 import (
-    "net/http"
-    "encoding/json"
-    "fmt"
-    "gopkg.in/mgo.v2/bson"
-    "crypto/md5"
+	"crypto/md5"
+	"encoding/json"
+	"net/http"
+
+	"gopkg.in/mgo.v2/bson"
+)
+
+var (
+	hasher = md5.New()
 )
 
 func loginHandler(w http.ResponseWriter, r *http.Request) {
-    decoder := json.NewDecoder(r.Body)
-    var u User
-    var udb User
-    hasher := md5.New()
-    err := decoder.Decode(&u)
-    errCheck(err)
-    derr := userCollection.Find(bson.M{"username": u.Username}).One(&udb)
-    fmt.Println("Doc Error")
-    errCheck(derr)
-    hashedUpPwd := hasher.Sum(u.Password)
+	decoder := json.NewDecoder(r.Body)
+	var u User
+	var udb User
 
-    w.WriteHeader(http.StatusForbidden)
+	err := decoder.Decode(&u)
+	errCheck(err)
+
+	derr := userCollection.Find(bson.M{"username": u.Username}).One(&udb)
+	errCheck(derr)
+
+	u.Password = hasher.Sum(u.Password)
+	if string(u.Password) == string(udb.Password) {
+		marshaledU, merr := json.Marshal(udb)
+		errCheck(merr)
+		w.Write(marshaledU)
+	} else {
+		w.WriteHeader(http.StatusForbidden)
+	}
 }
 
 func signupHandler(w http.ResponseWriter, r *http.Request) {
-    decoder := json.NewDecoder(r.Body)
-    var u User
-    err := decoder.Decode(&u)
+	decoder := json.NewDecoder(r.Body)
+	var u User
 
+	err := decoder.Decode(&u)
+	errCheck(err)
+
+	u.Password = hasher.Sum(u.Password)
+	derr := userCollection.Insert(u)
+	if derr != nil {
+		errCheck(derr)
+		w.WriteHeader(http.StatusForbidden)
+	} else {
+		marshaledU, merr := json.Marshal(u)
+		errCheck(merr)
+		w.Write(marshaledU)
+	}
 }
