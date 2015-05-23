@@ -57,3 +57,35 @@
 [CARD-MANAGER] 2015/05/23 13:36:22 Creating Router
 [CARD-MANAGER] 2015/05/23 13:36:22 Router Created
 [CARD-MANAGER] 2015/05/23 13:36:22 Server ready
+
+[CARD-MANAGER] 2015/05/23 13:58:32 Logger Initialized
+[CARD-MANAGER] 2015/05/23 13:58:32 Compiling Sass
+[CARD-MANAGER] 2015/05/23 13:58:32 Sass compiled
+[CARD-MANAGER] 2015/05/23 13:58:32 Connecting to DB
+[CARD-MANAGER] 2015/05/23 13:58:32 Connecting to DB: mongodb://magicbuilder:alm123@162.243.101.6:8085/magicbuildertest
+[CARD-MANAGER] 2015/05/23 13:58:33 DB Initialized
+[CARD-MANAGER] 2015/05/23 13:58:33 Creating Router
+[CARD-MANAGER] 2015/05/23 13:58:33 Router Created
+[CARD-MANAGER] 2015/05/23 13:58:33 Server ready
+
+[CARD-MANAGER] 2015/05/23 14:19:05 Logger Initialized
+[CARD-MANAGER] 2015/05/23 14:19:05 Compiling Sass
+[CARD-MANAGER] 2015/05/23 14:19:05 Sass compiled
+[CARD-MANAGER] 2015/05/23 14:19:05 Connecting to DB
+[CARD-MANAGER] 2015/05/23 14:19:05 Connecting to DB: mongodb://magicbuilder:alm123@162.243.101.6:8085/magicbuildertest
+[CARD-MANAGER] 2015/05/23 14:19:05 DB Initialized
+[CARD-MANAGER] 2015/05/23 14:19:05 Creating Router
+[CARD-MANAGER] 2015/05/23 14:19:05 Router Created
+[CARD-MANAGER] 2015/05/23 14:19:05 Server ready
+
+[CARD-MANAGER] 2015/05/23 14:19:53 Logger Initialized
+[CARD-MANAGER] 2015/05/23 14:19:53 Compiling Sass
+[CARD-MANAGER] 2015/05/23 14:19:53 Sass compiled
+[CARD-MANAGER] 2015/05/23 14:19:53 Connecting to DB
+[CARD-MANAGER] 2015/05/23 14:19:53 Connecting to DB: mongodb://magicbuilder:alm123@162.243.101.6:8085/magicbuildertest
+[CARD-MANAGER] 2015/05/23 14:19:53 DB Initialized
+[CARD-MANAGER] 2015/05/23 14:19:53 Creating Router
+[CARD-MANAGER] 2015/05/23 14:19:53 Router Created
+[CARD-MANAGER] 2015/05/23 14:19:53 Server ready
+[CARD-MANAGER] 2015/05/23 14:21:47 User ChasingLogic has successfully signed up.
+[CARD-MANAGER] 2015/05/23 14:22:19 User ChasingLogic has successfully logged in.

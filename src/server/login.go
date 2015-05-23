@@ -27,8 +27,10 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 	if string(u.Password) == string(udb.Password) {
 		marshaledU, merr := json.Marshal(udb)
 		errCheck(merr)
+		logger.Println("User " + u.Username + " has successfully logged in.")
 		w.Write(marshaledU)
 	} else {
+		logger.Println("User " + u.Username + " failed login attempt.")
 		w.WriteHeader(http.StatusForbidden)
 	}
 }
@@ -41,6 +43,7 @@ func signupHandler(w http.ResponseWriter, r *http.Request) {
 	errCheck(err)
 
 	u.Password = hasher.Sum(u.Password)
+	u.DashItems = append(u.DashItems, DashItem{Img: "/img/default.jpg", Title: "Dash Item Title", Content: "This is your default dash item! You can create your own by choosing \"Edit Dash\" from the side Menu!"})
 	derr := userCollection.Insert(u)
 	if derr != nil {
 		errCheck(derr)
@@ -48,6 +51,7 @@ func signupHandler(w http.ResponseWriter, r *http.Request) {
 	} else {
 		marshaledU, merr := json.Marshal(u)
 		errCheck(merr)
+		logger.Println("User " + u.Username + " has successfully signed up.")
 		w.Write(marshaledU)
 	}
 }

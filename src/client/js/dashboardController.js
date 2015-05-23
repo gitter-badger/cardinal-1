@@ -16,7 +16,7 @@ app.controller('dashboardController', function($scope, $location, $mdSidenav, au
     $scope.dashItems = [];
 
     $scope.buildDashboard = function(){
-        $http.get('/get_dash/' + $scope.user.username).success(function(data){
+        $http.get('/get_dash/' + $scope.user.Username).success(function(data){
             console.log(data);
         });
     };
