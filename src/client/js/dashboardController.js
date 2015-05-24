@@ -21,5 +21,10 @@ app.controller('dashboardController', function($scope, $location, $mdSidenav, au
         });
     };
 
+    $scope.createCollection = function() {
+        console.log("I SHould change something");
+        $location.url('createCollection');
+    };
+
 
 });

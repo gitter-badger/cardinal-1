@@ -7,6 +7,9 @@ app.config(['$routeProvider', function($routeProvider){
     }).when('/dashboard', {
         templateUrl: 'views/dashboard.html',
         controller: 'dashboardController'
+    }).when('/createCollection',{
+        templateUrl: 'views/createCollection.html',
+        controller: 'searchController'
     }).otherwise({
         redirectTo: '/login'
     });

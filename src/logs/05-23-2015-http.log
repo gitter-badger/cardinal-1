@@ -89,3 +89,15 @@
 [CARD-MANAGER] 2015/05/23 14:19:53 Server ready
 [CARD-MANAGER] 2015/05/23 14:21:47 User ChasingLogic has successfully signed up.
 [CARD-MANAGER] 2015/05/23 14:22:19 User ChasingLogic has successfully logged in.
+
+[CARD-MANAGER] 2015/05/23 23:18:39 Logger Initialized
+[CARD-MANAGER] 2015/05/23 23:18:39 Compiling Sass
+[CARD-MANAGER] 2015/05/23 23:18:39 Sass compiled
+[CARD-MANAGER] 2015/05/23 23:18:39 Connecting to DB
+[CARD-MANAGER] 2015/05/23 23:18:39 Connecting to DB: mongodb://magicbuilder:alm123@162.243.101.6:8085/magicbuildertest
+[CARD-MANAGER] 2015/05/23 23:18:39 DB Initialized
+[CARD-MANAGER] 2015/05/23 23:18:39 Creating Router
+[CARD-MANAGER] 2015/05/23 23:18:39 Router Created
+[CARD-MANAGER] 2015/05/23 23:18:39 Server ready
+[CARD-MANAGER] 2015/05/23 23:19:31 E11000 duplicate key error index: magicbuildertest.users.$email_1 dup key: { : null }
+[CARD-MANAGER] 2015/05/23 23:22:05 User Codious has successfully signed up.

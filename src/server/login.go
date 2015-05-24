@@ -16,6 +16,7 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 	decoder := json.NewDecoder(r.Body)
 	var u User
 	var udb User
+	logger.Println("LOGIN CALLED")
 
 	err := decoder.Decode(&u)
 	errCheck(err)
@@ -38,6 +39,7 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 func signupHandler(w http.ResponseWriter, r *http.Request) {
 	decoder := json.NewDecoder(r.Body)
 	var u User
+	logger.Println("SIGNUP CALLED")
 
 	err := decoder.Decode(&u)
 	errCheck(err)

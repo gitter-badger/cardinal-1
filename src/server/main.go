@@ -52,9 +52,9 @@ func initDB() {
 		logger.Fatalln(err.Error())
 	}
 
-	magicCollection = db.DB(dbname).C("magiccards")
 	hearthStoneCollection = db.DB(dbname).C("hearthstonecards")
 	userCollection = db.DB(dbname).C("users")
+	magicCollection = db.DB(dbname).C("magiccards")
 }
 
 func errCheck(err error) {
@@ -117,6 +117,7 @@ func main() {
 
 	router.HandleFunc("/login", loginHandler).Methods("POST")
 	router.HandleFunc("/signup", signupHandler).Methods("POST")
+	router.HandleFunc("/search/{game}/{name}", searchHandler).Methods("GET")
 	router.HandleFunc("/", indexHandler)
 
 	router.PathPrefix("/").Handler(http.FileServer(http.Dir("../client/")))
