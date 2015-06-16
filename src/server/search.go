@@ -22,14 +22,18 @@ func searchHandler(w http.ResponseWriter, r *http.Request) {
 	logger.Println(searchTerm)
 
 	if game == "magic" {
-		ferr := magicCollection.Find(bson.M{"name": &bson.M{Pattern: searchTerm, Options: "i"}}).All(&result)
+
+		ferr := magicCollection.Find(bson.M{"name": &bson.M{"$regex": ".*" + searchTerm + ".*", "$options": "i"}}).All(&result)
 		if ferr != nil {
 			logger.Println("Find Error")
 		}
 		errCheck(ferr)
+
 		logger.Println(result)
+
 		marshaledResults, merr := json.Marshal(result)
 		errCheck(merr)
+
 		w.Write(marshaledResults)
 	} else if game == "hearthstone" {
 		w.WriteHeader(500)

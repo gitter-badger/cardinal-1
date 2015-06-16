@@ -4,18 +4,14 @@
 		md-selected-item="selectedCard"
 		md-search-text="searchText"
 		md-items="item in possibleCompletions"
-		md-item-text="item.name"
+		md-item-text="item.Name"
 		md-min-length="3"
 		md-search-text-change="search(searchText)"
 		>
 
 		<md-item-template>
-			<span>{{item.name}}</span>
-			<img ng-src="{{item.imageNames[0]}}" />
+			<span>{{item.Name}}</span>
+			<img ng-src="{{item.ImageNames[0]}}" />
 		</md-item-template>
-		<md-not-found>
-			No cards match your search...
-		</md-not-found>
-
 	</md-autocomplete>
 </md-content>
