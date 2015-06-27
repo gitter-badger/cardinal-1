@@ -1,0 +1,211 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '--save-dev',
+1 verbose cli   'gulp' ]
+2 info using npm@2.11.2
+3 info using node@v0.12.5
+4 verbose install initial load of /home/mathew/projects/go/src/github.com/ChasingLogic/CardCollector/client/package.json
+5 warn package.json client@0.1.0 No repository field.
+6 warn package.json client@0.1.0 No README data
+7 warn package.json client@0.1.0 license should be a valid SPDX license expression
+8 verbose installManyTop reading scoped package data from /home/mathew/projects/go/src/github.com/ChasingLogic/CardCollector/client/node_modules/gulp/package.json
+9 verbose readDependencies loading dependencies from /home/mathew/projects/go/src/github.com/ChasingLogic/CardCollector/client/package.json
+10 verbose install gulp is installed as 3.9.0
+11 silly cache add args [ 'gulp', null ]
+12 verbose cache add spec gulp
+13 silly cache add parsed spec { raw: 'gulp',
+13 silly cache add   scope: null,
+13 silly cache add   name: 'gulp',
+13 silly cache add   rawSpec: '',
+13 silly cache add   spec: '*',
+13 silly cache add   type: 'range' }
+14 silly addNamed gulp@*
+15 verbose addNamed "*" is a valid semver range for gulp
+16 silly addNameRange { name: 'gulp', range: '*', hasData: false }
+17 silly mapToRegistry name gulp
+18 silly mapToRegistry using default registry
+19 silly mapToRegistry registry https://registry.npmjs.org/
+20 silly mapToRegistry uri https://registry.npmjs.org/gulp
+21 verbose addNameRange registry:https://registry.npmjs.org/gulp not in flight; fetching
+22 verbose request uri https://registry.npmjs.org/gulp
+23 verbose request no auth needed
+24 info attempt registry request try #1 at 1:25:25 AM
+25 verbose request id 6948c21a626d7175
+26 verbose etag "90XN1S3R3BONQPU7TA7OT2XEW"
+27 http request GET https://registry.npmjs.org/gulp
+28 http 304 https://registry.npmjs.org/gulp
+29 silly get cb [ 304,
+29 silly get   { date: 'Sat, 27 Jun 2015 05:25:25 GMT',
+29 silly get     via: '1.1 varnish',
+29 silly get     'cache-control': 'max-age=60',
+29 silly get     etag: '"90XN1S3R3BONQPU7TA7OT2XEW"',
+29 silly get     age: '45',
+29 silly get     connection: 'keep-alive',
+29 silly get     'x-served-by': 'cache-dfw1823-DFW',
+29 silly get     'x-cache': 'HIT',
+29 silly get     'x-cache-hits': '1',
+29 silly get     'x-timer': 'S1435382725.361773,VS0,VE0',
+29 silly get     vary: 'Accept' } ]
+30 verbose etag https://registry.npmjs.org/gulp from cache
+31 verbose get saving gulp to /home/mathew/.npm/registry.npmjs.org/gulp/.cache.json
+32 silly addNameRange number 2 { name: 'gulp', range: '*', hasData: true }
+33 silly addNameRange versions [ 'gulp',
+33 silly addNameRange   [ '0.0.1',
+33 silly addNameRange     '0.0.2',
+33 silly addNameRange     '0.0.3',
+33 silly addNameRange     '0.0.4',
+33 silly addNameRange     '0.0.5',
+33 silly addNameRange     '0.0.7',
+33 silly addNameRange     '0.0.8',
+33 silly addNameRange     '0.0.9',
+33 silly addNameRange     '0.1.0',
+33 silly addNameRange     '0.2.0',
+33 silly addNameRange     '1.0.0',
+33 silly addNameRange     '1.1.0',
+33 silly addNameRange     '1.2.0',
+33 silly addNameRange     '1.2.1',
+33 silly addNameRange     '2.0.0',
+33 silly addNameRange     '2.0.1',
+33 silly addNameRange     '2.1.0',
+33 silly addNameRange     '2.2.0',
+33 silly addNameRange     '2.3.0',
+33 silly addNameRange     '2.4.0',
+33 silly addNameRange     '2.4.1',
+33 silly addNameRange     '2.6.0',
+33 silly addNameRange     '2.6.1',
+33 silly addNameRange     '2.7.0',
+33 silly addNameRange     '3.0.0',
+33 silly addNameRange     '3.1.1',
+33 silly addNameRange     '3.1.2',
+33 silly addNameRange     '3.1.3',
+33 silly addNameRange     '3.1.4',
+33 silly addNameRange     '3.2.0',
+33 silly addNameRange     '3.2.1',
+33 silly addNameRange     '3.2.2',
+33 silly addNameRange     '3.2.3',
+33 silly addNameRange     '3.2.4',
+33 silly addNameRange     '3.2.5',
+33 silly addNameRange     '3.3.0',
+33 silly addNameRange     '3.3.1',
+33 silly addNameRange     '3.3.2',
+33 silly addNameRange     '3.3.4',
+33 silly addNameRange     '3.4.0',
+33 silly addNameRange     '3.5.0',
+33 silly addNameRange     '3.5.1',
+33 silly addNameRange     '3.5.2',
+33 silly addNameRange     '3.5.5',
+33 silly addNameRange     '3.5.6',
+33 silly addNameRange     '3.6.0',
+33 silly addNameRange     '3.6.1',
+33 silly addNameRange     '3.6.2',
+33 silly addNameRange     '3.7.0',
+33 silly addNameRange     '3.8.0',
+33 silly addNameRange     '3.8.1',
+33 silly addNameRange     '3.8.2',
+33 silly addNameRange     '3.8.3',
+33 silly addNameRange     '3.8.4',
+33 silly addNameRange     '3.8.5',
+33 silly addNameRange     '3.8.6',
+33 silly addNameRange     '3.8.7',
+33 silly addNameRange     '3.8.8',
+33 silly addNameRange     '3.8.9',
+33 silly addNameRange     '3.8.10',
+33 silly addNameRange     '3.8.11',
+33 silly addNameRange     '3.9.0' ] ]
+34 silly addNamed gulp@3.9.0
+35 verbose addNamed "3.9.0" is a plain semver version for gulp
+36 silly cache afterAdd gulp@3.9.0
+37 verbose afterAdd /home/mathew/.npm/gulp/3.9.0/package/package.json not in flight; writing
+38 verbose afterAdd /home/mathew/.npm/gulp/3.9.0/package/package.json written
+39 silly install resolved [ { name: 'gulp',
+39 silly install resolved     description: 'The streaming build system',
+39 silly install resolved     version: '3.9.0',
+39 silly install resolved     homepage: 'http://gulpjs.com',
+39 silly install resolved     repository: { type: 'git', url: 'git+https://github.com/gulpjs/gulp.git' },
+39 silly install resolved     author:
+39 silly install resolved      { name: 'Fractal',
+39 silly install resolved        email: 'contact@wearefractal.com',
+39 silly install resolved        url: 'http://wearefractal.com/' },
+39 silly install resolved     tags: [ 'build', 'stream', 'system', 'make', 'tool', 'asset', 'pipeline' ],
+39 silly install resolved     files: [ 'index.js', 'lib', 'bin', 'completion' ],
+39 silly install resolved     bin: { gulp: './bin/gulp.js' },
+39 silly install resolved     man: [ 'gulp.1' ],
+39 silly install resolved     dependencies:
+39 silly install resolved      { archy: '^1.0.0',
+39 silly install resolved        chalk: '^1.0.0',
+39 silly install resolved        deprecated: '^0.0.1',
+39 silly install resolved        'gulp-util': '^3.0.0',
+39 silly install resolved        interpret: '^0.6.2',
+39 silly install resolved        liftoff: '^2.1.0',
+39 silly install resolved        minimist: '^1.1.0',
+39 silly install resolved        orchestrator: '^0.3.0',
+39 silly install resolved        'pretty-hrtime': '^1.0.0',
+39 silly install resolved        semver: '^4.1.0',
+39 silly install resolved        tildify: '^1.0.0',
+39 silly install resolved        v8flags: '^2.0.2',
+39 silly install resolved        'vinyl-fs': '^0.3.0' },
+39 silly install resolved     devDependencies:
+39 silly install resolved      { coveralls: '^2.7.0',
+39 silly install resolved        'graceful-fs': '^3.0.0',
+39 silly install resolved        istanbul: '^0.3.0',
+39 silly install resolved        jscs: '~1.12.0',
+39 silly install resolved        jshint: '^2.5.0',
+39 silly install resolved        'jshint-stylish': '^1.0.0',
+39 silly install resolved        'marked-man': '^0.1.3',
+39 silly install resolved        mkdirp: '^0.5.0',
+39 silly install resolved        mocha: '^2.0.1',
+39 silly install resolved        'mocha-lcov-reporter': '^0.0.1',
+39 silly install resolved        q: '^1.0.0',
+39 silly install resolved        rimraf: '^2.2.5',
+39 silly install resolved        should: '^5.0.1' },
+39 silly install resolved     scripts:
+39 silly install resolved      { prepublish: 'marked-man --name gulp docs/CLI.md > gulp.1',
+39 silly install resolved        lint: 'jshint lib bin test index.js --reporter node_modules/jshint-stylish/stylish.js --exclude node_modules && jscs lib bin test index.js',
+39 silly install resolved        test: 'npm run-script lint && mocha --reporter spec',
+39 silly install resolved        coveralls: 'istanbul cover _mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage' },
+39 silly install resolved     engines: { node: '>= 0.9' },
+39 silly install resolved     license: 'MIT',
+39 silly install resolved     gitHead: '657213a52d5e9c19b85df6a42f76341a98c08ae8',
+39 silly install resolved     bugs: { url: 'https://github.com/gulpjs/gulp/issues' },
+39 silly install resolved     _id: 'gulp@3.9.0',
+39 silly install resolved     _shasum: 'cf1fba4cb558bb8c6ae6c9613f583ae2620d214a',
+39 silly install resolved     _from: 'gulp@*',
+39 silly install resolved     _npmVersion: '2.8.3',
+39 silly install resolved     _nodeVersion: '0.10.36',
+39 silly install resolved     _npmUser: { name: 'phated', email: 'blaine@iceddev.com' },
+39 silly install resolved     maintainers: [ [Object], [Object] ],
+39 silly install resolved     dist:
+39 silly install resolved      { shasum: 'cf1fba4cb558bb8c6ae6c9613f583ae2620d214a',
+39 silly install resolved        tarball: 'http://registry.npmjs.org/gulp/-/gulp-3.9.0.tgz' },
+39 silly install resolved     directories: {},
+39 silly install resolved     _resolved: 'https://registry.npmjs.org/gulp/-/gulp-3.9.0.tgz',
+39 silly install resolved     readme: 'ERROR: No README data found!' } ]
+40 info install gulp@3.9.0 into /home/mathew/projects/go/src/github.com/ChasingLogic/CardCollector/client
+41 info installOne gulp@3.9.0
+42 verbose installOne of gulp to /home/mathew/projects/go/src/github.com/ChasingLogic/CardCollector/client not in flight; installing
+43 warn locking Error: EACCES, open '/home/mathew/.npm/_locks/gulp-5e38e908b7988498.lock.STALE'
+43 warn locking     at Error (native)
+43 warn locking  /home/mathew/.npm/_locks/gulp-5e38e908b7988498.lock failed { [Error: EACCES, open '/home/mathew/.npm/_locks/gulp-5e38e908b7988498.lock.STALE']
+43 warn locking   errno: -13,
+43 warn locking   code: 'EACCES',
+43 warn locking   path: '/home/mathew/.npm/_locks/gulp-5e38e908b7988498.lock.STALE' }
+44 verbose stack Error: Attempt to unlock /home/mathew/projects/go/src/github.com/ChasingLogic/CardCollector/client/node_modules/gulp, which hasn't been locked
+44 verbose stack     at unlock (/usr/local/lib/node_modules/npm/lib/utils/locker.js:66:11)
+44 verbose stack     at cb (/usr/local/lib/node_modules/npm/lib/install.js:1017:5)
+44 verbose stack     at /usr/local/lib/node_modules/npm/lib/install.js:1021:20
+44 verbose stack     at /usr/local/lib/node_modules/npm/lib/utils/locker.js:40:9
+44 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/lockfile/lockfile.js:149:38)
+44 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/lockfile/lockfile.js:227:24
+44 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/lockfile/lockfile.js:177:38
+44 verbose stack     at FSReqWrap.oncomplete (fs.js:95:15)
+45 verbose cwd /home/mathew/projects/go/src/github.com/ChasingLogic/CardCollector/client
+46 error Linux 3.19.0-15-generic
+47 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "--save-dev" "gulp"
+48 error node v0.12.5
+49 error npm  v2.11.2
+50 error Attempt to unlock /home/mathew/projects/go/src/github.com/ChasingLogic/CardCollector/client/node_modules/gulp, which hasn't been locked
+51 error If you need help, you may report this error at:
+51 error     <https://github.com/npm/npm/issues>
+52 verbose exit [ 1, true ]
