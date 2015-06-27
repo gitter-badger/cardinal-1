@@ -2,4 +2,4 @@ db.properties
 client/node_modules/*
 client/bower_modules/*
 *.log
-dbconfig.json
+database_setup/dbconfig.json.bak
