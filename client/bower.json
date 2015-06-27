@@ -19,6 +19,7 @@
     "angular-ui-router": "~0.2.15",
     "angular": "~1.4.1",
     "bootstrap": "~3.3.5",
-    "md-data-table": "*"
+    "md-data-table": "*",
+    "angular-messages": "~1.4.1"
   }
 }

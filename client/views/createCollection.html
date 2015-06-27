@@ -1,17 +1,1 @@
-<md-content ng-controller="searchController">
-	<md-autocomplete
-		placeholder="Type the card name you would like to search for here."
-		md-selected-item="selectedCard"
-		md-search-text="searchText"
-		md-items="item in possibleCompletions"
-		md-item-text="item.Name"
-		md-min-length="3"
-		md-search-text-change="search(searchText)"
-		>
-
-		<md-item-template>
-			<span>{{item.Name}}</span>
-			<img ng-src="{{item.ImageNames[0]}}" />
-		</md-item-template>
-	</md-autocomplete>
-</md-content>
+<md-content ng-controller="searchController"><md-autocomplete placeholder="Type the card name you would like to search for here." md-selected-item="selectedCard" md-search-text="searchText" md-items="item in possibleCompletions" md-item-text="item.Name" md-min-length="3" md-search-text-change="search(searchText)"><md-item-template><span>{{item.Name}}</span><img ng-src="{{item.ImageNames[0]}}"/></md-item-template></md-autocomplete></md-content>
