@@ -1,0 +1,7 @@
+{
+    "user": "dbuser",
+    "password": "dbpass",
+    "url": "dburl",
+    "port": "dbport",
+    "dbname": "dbname"
+}
