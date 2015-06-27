@@ -1,0 +1,23 @@
+div(class="full-height-min")
+    md-content(layout="column")
+        md-toolbar(layout="row" class="md-theme-indigo")
+            div(class="md-toolbar-tools")
+                md-button(aria-label="settings" ng-click="toggleMenu()" class="md-icon-button")
+                    md-icon(md-svg-src="/img/icons/0190-menu-white.svg" class="s48")
+                h2(id="dashTitle") {{ user.Username }}'s Dashboard
+                
+        md-content(layout="row")
+            div(layout="vertical" class="sidenav")
+
+                md-sidenav(layout-fill="layout-fill" id="popupNav" 
+                    flex="flex" md-component-id="menu"
+                    class="md-sidenav-left md-whiteframe-z2 sidenav")
+
+                    md-toolbar class="md-theme-light")
+                        h1(class="md-toolbar-tools") Menu
+                    md-button(class="md-primary" ng-click="createCollection()") Create A Collection
+                    md-button(class="md-primary") Edit A Collection
+                    md-button(class="md-primary") Manage Your Collections
+
+            //- This is where our dash items will go 
+            md-content(layout-wrap="layout-wrap" layout="row")
