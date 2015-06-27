@@ -1,7 +1,7 @@
 {
-    "user": "dbusername",
-    "password": "dbpassword",
-    "url": "dbiporhostname",
-    "port": "dbport",
-    "dbname": "dbname"
+    "user": "magicbuilder",
+    "password": "alm123",
+    "url": "162.243.101.6",
+    "port": "3001",
+    "dbname": "magicbuildertest"
 }

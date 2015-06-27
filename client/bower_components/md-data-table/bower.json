@@ -1,0 +1,45 @@
+{
+  "name": "md-data-table",
+  "version": "0.0.0",
+  "homepage": "https://github.com/iamisti/md-data-table",
+  "authors": [
+    "Istvan Fodor <programtervezo@gmail.com>"
+  ],
+  "main": [
+    "dist/md-data-table.js",
+    "dist/md-data-table-templates.js",
+    "dist/md-data-table-style.css"
+  ],
+  "description": "data table based on google material design",
+  "keywords": [
+    "data-table",
+    "angular",
+    "material",
+    "angular",
+    "material"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "lodash": "~3.9.3",
+    "angular": "~1.4.0",
+    "angular-sanitize": "~1.4.0",
+    "angular-animate": "~1.4.0",
+    "angular-material": "~0.9.6",
+    "angular-uuid4": "v0.3.0",
+    "angular-material-icons": "~v0.4.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.0"
+  },
+  "resolutions": {
+    "angular": "~1.4.0"
+  }
+}
