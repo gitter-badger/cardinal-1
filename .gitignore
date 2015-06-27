@@ -1,5 +1,6 @@
 db.properties
 client/node_modules/*
-client/bower_modules/*
+client/bower_components/*
 *.log
-database_setup/dbconfig.json.bak
+*/*.log
+database_setup/dbconfig.json
