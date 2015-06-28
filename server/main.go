@@ -1,50 +1,34 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"io"
-	"log"
 	"net/http"
 	"os"
-	"strings"
 	"time"
 
+	"github.com/ChasingLogic/configoslurper"
+	"github.com/Sirupsen/logrus"
 	"github.com/gorilla/mux"
-	"github.com/suapapa/go_sass"
 	"gopkg.in/mgo.v2"
 )
 
 var (
-	logger                *log.Logger
+	logger                = logrus.New()
 	db                    *mgo.Session
 	magicCollection       *mgo.Collection
 	hearthStoneCollection *mgo.Collection
 	userCollection        *mgo.Collection
 )
 
-func loadDbProperties() (string, string) {
-	propFile, err := os.Open("db.properties")
-	if err != nil {
-		logger.Fatalln(err.Error())
-	}
-	scanner := bufio.NewScanner(propFile)
-	var keys = make(map[string]string)
-
-	for scanner.Scan() {
-		line := scanner.Text()
-		split := strings.Split(line, "=")
-		keys[split[0]] = split[1]
-	}
-
-	url := "mongodb://" + keys["user"] + ":" + keys["password"] + "@" + keys["ip"] + ":" + keys["port"] + "/" + keys["dbName"]
-	logger.Println("Connecting to DB: " + url)
-	return url, keys["dbName"]
-}
-
 func initDB() {
 	var err error
-	dialURL, dbname := loadDbProperties()
+	slurper := configoslurper.GetBasicSlurper("db.properties")
+	settings := slurper.Slurp()
+	logger.Debug(settings)
+
+	dialURL := "mongodb://" + settings["user"] + ":" + settings["password"] + "@" + settings["ip"] + ":" + settings["port"] + "/" + settings["dbname"]
+	logger.Info("Connecting to mongodb @ " + dialURL)
 	db, err = mgo.Dial(dialURL)
 
 	errCheck(err)
@@ -52,14 +36,14 @@ func initDB() {
 		logger.Fatalln(err.Error())
 	}
 
-	hearthStoneCollection = db.DB(dbname).C("hearthstonecards")
-	userCollection = db.DB(dbname).C("users")
-	magicCollection = db.DB(dbname).C("magiccards")
+	hearthStoneCollection = db.DB(settings["dbname"]).C("hearthstonecards")
+	userCollection = db.DB(settings["dbname"]).C("users")
+	magicCollection = db.DB(settings["dbname"]).C("magiccards")
 }
 
 func errCheck(err error) {
 	if err != nil {
-		logger.Println(err.Error())
+		logger.Warn(err.Error())
 	}
 }
 
@@ -69,12 +53,13 @@ func getLogFile() *os.File {
 	filename := "../logs/" + time.Now().Format("01-02-2006") + "-http.log"
 
 	if _, err := os.Stat(filename); err == nil {
-		fmt.Println("File exists")
 		logFile, fileErr = os.OpenFile(filename, os.O_RDWR|os.O_APPEND, 0660)
 		logFile.WriteString("\n")
 		if fileErr != nil {
 			fmt.Println(fileErr.Error())
+			os.Exit(1)
 		}
+
 	} else {
 		_, pErr := os.Stat("../logs/")
 
@@ -85,6 +70,7 @@ func getLogFile() *os.File {
 		logFile, fileErr = os.Create(filename)
 		if fileErr != nil {
 			fmt.Println(fileErr.Error())
+			os.Exit(1)
 		}
 	}
 
@@ -97,32 +83,36 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	fmt.Println("Server starting")
+
 	logFile := getLogFile()
 	mwriter := io.MultiWriter(os.Stdout, logFile)
 
-	logger = log.New(mwriter, "[CARD-MANAGER] ", log.Ldate|log.Ltime)
-	logger.Println("Logger Initialized")
+	logger.Out = mwriter
+	logger.Level = logrus.DebugLevel
+	logger.Formatter = new(logrus.TextFormatter)
+	logger.Debug("logger initialized")
 
-	logger.Println("Compiling Sass")
-	var sc sass.Compiler
-	sc.CompileFolder("../client/sass", "../client/css")
-	logger.Println("Sass compiled")
-	logger.Println("Connecting to DB")
+	logger.Info("connecting to mongodb")
 	initDB()
 	defer db.Close()
-	logger.Println("DB Initialized")
+	logger.Info("mongodb connection successfull")
 
-	logger.Println("Creating Router")
+	logger.Debug("Creating router")
 	router := mux.NewRouter()
 
 	router.HandleFunc("/login", loginHandler).Methods("POST")
+	logger.Debug("login handler registered")
 	router.HandleFunc("/signup", signupHandler).Methods("POST")
+	logger.Debug("signup handler registered")
 	router.HandleFunc("/search/{game}/{name}", searchHandler).Methods("GET")
+	logger.Debug("search handler registered")
 	router.HandleFunc("/", indexHandler)
+	logger.Debug("root handler registered")
 
 	router.PathPrefix("/").Handler(http.FileServer(http.Dir("../client/")))
+	logger.Debug("serving static client files")
 
-	logger.Println("Router Created")
-	logger.Println("Server ready")
+	logger.Debug("Router created")
+	logger.Info("Server ready")
 	http.ListenAndServe(":3001", router)
 }
