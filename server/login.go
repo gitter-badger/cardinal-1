@@ -16,7 +16,7 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 	decoder := json.NewDecoder(r.Body)
 	var u User
 	var udb User
-	logger.Println("LOGIN CALLED")
+	logger.Debug("login handler called")
 
 	err := decoder.Decode(&u)
 	errCheck(err)
@@ -28,10 +28,10 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 	if string(u.Password) == string(udb.Password) {
 		marshaledU, merr := json.Marshal(udb)
 		errCheck(merr)
-		logger.Println("User " + u.Username + " has successfully logged in.")
+		logger.Info("User " + u.Username + " has successfully logged in.")
 		w.Write(marshaledU)
 	} else {
-		logger.Println("User " + u.Username + " failed login attempt.")
+		logger.Info("User " + u.Username + " failed login attempt.")
 		w.WriteHeader(http.StatusForbidden)
 	}
 }
@@ -39,7 +39,7 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 func signupHandler(w http.ResponseWriter, r *http.Request) {
 	decoder := json.NewDecoder(r.Body)
 	var u User
-	logger.Println("SIGNUP CALLED")
+	logger.Debug("signup handler called")
 
 	err := decoder.Decode(&u)
 	errCheck(err)
@@ -53,7 +53,7 @@ func signupHandler(w http.ResponseWriter, r *http.Request) {
 	} else {
 		marshaledU, merr := json.Marshal(u)
 		errCheck(merr)
-		logger.Println("User " + u.Username + " has successfully signed up.")
+		logger.Info("User " + u.Username + " has successfully signed up.")
 		w.Write(marshaledU)
 	}
 }
