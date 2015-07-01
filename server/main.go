@@ -24,7 +24,11 @@ var (
 func initDB() {
 	var err error
 	slurper := configoslurper.GetBasicSlurper("db.properties")
-	settings := slurper.Slurp()
+	settings, serr := slurper.Slurp()
+	if serr != nil {
+		logger.Fatalln(serr.Error())
+	}
+
 	logger.Debug(settings)
 
 	dialURL := "mongodb://" + settings["user"] + ":" + settings["password"] + "@" + settings["ip"] + ":" + settings["port"] + "/" + settings["dbname"]
