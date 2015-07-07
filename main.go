@@ -5,7 +5,7 @@ import (
 	"io"
 	"net/http"
 	"os"
-	"time"
+	"strings"
 
 	"github.com/ChasingLogic/configoslurper"
 	"github.com/Sirupsen/logrus"
@@ -14,7 +14,9 @@ import (
 )
 
 var (
+	settings              map[string]string
 	logger                = logrus.New()
+	slurper               = configoslurper.GetBasicSlurper("application.properties")
 	db                    *mgo.Session
 	magicCollection       *mgo.Collection
 	hearthStoneCollection *mgo.Collection
@@ -23,15 +25,8 @@ var (
 
 func initDB() {
 	var err error
-	slurper := configoslurper.GetBasicSlurper("db.properties")
-	settings, serr := slurper.Slurp()
-	if serr != nil {
-		logger.Fatalln(serr.Error())
-	}
 
-	logger.Debug(settings)
-
-	dialURL := "mongodb://" + settings["user"] + ":" + settings["password"] + "@" + settings["ip"] + ":" + settings["port"] + "/" + settings["dbname"]
+	dialURL := "mongodb://" + settings["dbuser"] + ":" + settings["dbpassword"] + "@" + settings["dbaddress"] + ":" + settings["dbport"] + "/" + settings["dbname"]
 	logger.Info("Connecting to mongodb @ " + dialURL)
 	db, err = mgo.Dial(dialURL)
 
@@ -51,10 +46,12 @@ func errCheck(err error) {
 	}
 }
 
-func getLogFile() *os.File {
+func loggerInit() (*os.File, logrus.Level) {
 	var logFile *os.File
 	var fileErr error
-	filename := "../logs/" + time.Now().Format("01-02-2006") + "-http.log"
+	filename := "cardcollector.out"
+
+	fmt.Println("Log File: " + filename)
 
 	if _, err := os.Stat(filename); err == nil {
 		logFile, fileErr = os.OpenFile(filename, os.O_RDWR|os.O_APPEND, 0660)
@@ -78,22 +75,56 @@ func getLogFile() *os.File {
 		}
 	}
 
-	return logFile
+	switch strings.ToLower(settings["loglevel"]) {
+
+	case "debug":
+		return logFile, logrus.DebugLevel
+
+	case "info":
+		return logFile, logrus.InfoLevel
+
+	case "warn":
+		return logFile, logrus.WarnLevel
+
+	case "error":
+		return logFile, logrus.ErrorLevel
+
+	case "fatal":
+		return logFile, logrus.FatalLevel
+
+	case "panic":
+		return logFile, logrus.PanicLevel
+
+	default:
+		return logFile, logrus.InfoLevel
+
+	}
+
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
-	http.ServeFile(w, r, "../client/views/index.html")
+	logger.Debug("Incoming request recieved")
+	http.ServeFile(w, r, "client/views/index.html")
 }
 
 func main() {
 	fmt.Println("Server starting")
 
-	logFile := getLogFile()
+	var serr error
+	settings, serr = slurper.Slurp()
+	if serr != nil {
+		logger.Fatalln(serr.Error())
+	}
+
+	logFile, logLevel := loggerInit()
 	mwriter := io.MultiWriter(os.Stdout, logFile)
 
 	logger.Out = mwriter
-	logger.Level = logrus.DebugLevel
-	logger.Formatter = new(logrus.TextFormatter)
+	logger.Level = logLevel
+	logger.Formatter = &logrus.TextFormatter{
+		FullTimestamp:   true,
+		TimestampFormat: "01/02/2006 15:04:05",
+	}
 	logger.Debug("logger initialized")
 
 	logger.Info("connecting to mongodb")
@@ -113,10 +144,13 @@ func main() {
 	router.HandleFunc("/", indexHandler)
 	logger.Debug("root handler registered")
 
-	router.PathPrefix("/").Handler(http.FileServer(http.Dir("../client/")))
+	router.PathPrefix("/").Handler(http.FileServer(http.Dir("client/")))
 	logger.Debug("serving static client files")
 
 	logger.Debug("Router created")
-	logger.Info("Server ready")
-	http.ListenAndServe(":3001", router)
+	if settings["port"] == "" {
+		settings["port"] = "8080"
+	}
+	logger.Info("Server ready on port " + settings["port"])
+	http.ListenAndServe(":"+settings["port"], router)
 }

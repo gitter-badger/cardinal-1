@@ -1,7 +1,7 @@
 @import "login.scss";
 @import "dashboard.scss";
 
-.standard-button-cursor {
+@mixin standard-button-cursor() {
     -webkit-user-select: none; /* Chrome/Safari */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+ */

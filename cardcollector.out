@@ -1,0 +1,138 @@
+[37mDEBU[0m[07/06/2015 20:29:22] logger initialized                           
+[34mINFO[0m[07/06/2015 20:29:22] connecting to mongodb                        
+[34mINFO[0m[07/06/2015 20:29:22] Connecting to mongodb @ mongodb://magicbuilder:alm123@162.243.101.6:8085/magicbuildertest 
+[34mINFO[0m[07/06/2015 20:29:23] mongodb connection successfull               
+[37mDEBU[0m[07/06/2015 20:29:23] Creating router                              
+[37mDEBU[0m[07/06/2015 20:29:23] login handler registered                     
+[37mDEBU[0m[07/06/2015 20:29:23] signup handler registered                    
+[37mDEBU[0m[07/06/2015 20:29:23] search handler registered                    
+[37mDEBU[0m[07/06/2015 20:29:23] root handler registered                      
+[37mDEBU[0m[07/06/2015 20:29:23] serving static client files                  
+[37mDEBU[0m[07/06/2015 20:29:23] Router created                               
+[34mINFO[0m[07/06/2015 20:29:23] Server ready                                 
+
+[37mDEBU[0m[07/06/2015 20:38:04] logger initialized                           
+[34mINFO[0m[07/06/2015 20:38:04] connecting to mongodb                        
+[34mINFO[0m[07/06/2015 20:38:04] Connecting to mongodb @ mongodb://magicbuilder:alm123@162.243.101.6:8085/magicbuildertest 
+[34mINFO[0m[07/06/2015 20:38:04] mongodb connection successfull               
+[37mDEBU[0m[07/06/2015 20:38:04] Creating router                              
+[37mDEBU[0m[07/06/2015 20:38:04] login handler registered                     
+[37mDEBU[0m[07/06/2015 20:38:04] signup handler registered                    
+[37mDEBU[0m[07/06/2015 20:38:04] search handler registered                    
+[37mDEBU[0m[07/06/2015 20:38:04] root handler registered                      
+[37mDEBU[0m[07/06/2015 20:38:04] serving static client files                  
+[37mDEBU[0m[07/06/2015 20:38:04] Router created                               
+[34mINFO[0m[07/06/2015 20:38:04] Server ready                                 
+
+[37mDEBU[0m[07/06/2015 20:39:14] logger initialized                           
+[34mINFO[0m[07/06/2015 20:39:14] connecting to mongodb                        
+[34mINFO[0m[07/06/2015 20:39:14] Connecting to mongodb @ mongodb://magicbuilder:alm123@162.243.101.6:8085/magicbuildertest 
+[34mINFO[0m[07/06/2015 20:39:14] mongodb connection successfull               
+[37mDEBU[0m[07/06/2015 20:39:14] Creating router                              
+[37mDEBU[0m[07/06/2015 20:39:14] login handler registered                     
+[37mDEBU[0m[07/06/2015 20:39:14] signup handler registered                    
+[37mDEBU[0m[07/06/2015 20:39:14] search handler registered                    
+[37mDEBU[0m[07/06/2015 20:39:14] root handler registered                      
+[37mDEBU[0m[07/06/2015 20:39:14] serving static client files                  
+[37mDEBU[0m[07/06/2015 20:39:14] Router created                               
+[34mINFO[0m[07/06/2015 20:39:14] Server ready                                 
+
+[37mDEBU[0m[07/06/2015 20:40:25] logger initialized                           
+[34mINFO[0m[07/06/2015 20:40:25] connecting to mongodb                        
+[34mINFO[0m[07/06/2015 20:40:25] Connecting to mongodb @ mongodb://magicbuilder:alm123@162.243.101.6:8085/magicbuildertest 
+[34mINFO[0m[07/06/2015 20:40:26] mongodb connection successfull               
+[37mDEBU[0m[07/06/2015 20:40:26] Creating router                              
+[37mDEBU[0m[07/06/2015 20:40:26] login handler registered                     
+[37mDEBU[0m[07/06/2015 20:40:26] signup handler registered                    
+[37mDEBU[0m[07/06/2015 20:40:26] search handler registered                    
+[37mDEBU[0m[07/06/2015 20:40:26] root handler registered                      
+[37mDEBU[0m[07/06/2015 20:40:26] serving static client files                  
+[37mDEBU[0m[07/06/2015 20:40:26] Router created                               
+[34mINFO[0m[07/06/2015 20:40:26] Server ready                                 
+
+[37mDEBU[0m[07/06/2015 20:40:48] logger initialized                           
+[34mINFO[0m[07/06/2015 20:40:48] connecting to mongodb                        
+[34mINFO[0m[07/06/2015 20:40:48] Connecting to mongodb @ mongodb://magicbuilder:alm123@162.243.101.6:8085/magicbuildertest 
+[34mINFO[0m[07/06/2015 20:40:48] mongodb connection successfull               
+[37mDEBU[0m[07/06/2015 20:40:48] Creating router                              
+[37mDEBU[0m[07/06/2015 20:40:48] login handler registered                     
+[37mDEBU[0m[07/06/2015 20:40:48] signup handler registered                    
+[37mDEBU[0m[07/06/2015 20:40:48] search handler registered                    
+[37mDEBU[0m[07/06/2015 20:40:48] root handler registered                      
+[37mDEBU[0m[07/06/2015 20:40:48] serving static client files                  
+[37mDEBU[0m[07/06/2015 20:40:48] Router created                               
+[34mINFO[0m[07/06/2015 20:40:48] Server ready                                 
+
+[37mDEBU[0m[07/06/2015 20:41:28] logger initialized                           
+[34mINFO[0m[07/06/2015 20:41:28] connecting to mongodb                        
+[34mINFO[0m[07/06/2015 20:41:28] Connecting to mongodb @ mongodb://magicbuilder:alm123@162.243.101.6:8085/magicbuildertest 
+[34mINFO[0m[07/06/2015 20:41:28] mongodb connection successfull               
+[37mDEBU[0m[07/06/2015 20:41:28] Creating router                              
+[37mDEBU[0m[07/06/2015 20:41:28] login handler registered                     
+[37mDEBU[0m[07/06/2015 20:41:28] signup handler registered                    
+[37mDEBU[0m[07/06/2015 20:41:28] search handler registered                    
+[37mDEBU[0m[07/06/2015 20:41:28] root handler registered                      
+[37mDEBU[0m[07/06/2015 20:41:28] serving static client files                  
+[37mDEBU[0m[07/06/2015 20:41:28] Router created                               
+[34mINFO[0m[07/06/2015 20:41:28] Server ready on port 8080                    
+
+[37mDEBU[0m[07/06/2015 20:42:11] logger initialized                           
+[34mINFO[0m[07/06/2015 20:42:11] connecting to mongodb                        
+[34mINFO[0m[07/06/2015 20:42:11] Connecting to mongodb @ mongodb://magicbuilder:alm123@162.243.101.6:8085/magicbuildertest 
+[34mINFO[0m[07/06/2015 20:42:12] mongodb connection successfull               
+[37mDEBU[0m[07/06/2015 20:42:12] Creating router                              
+[37mDEBU[0m[07/06/2015 20:42:12] login handler registered                     
+[37mDEBU[0m[07/06/2015 20:42:12] signup handler registered                    
+[37mDEBU[0m[07/06/2015 20:42:12] search handler registered                    
+[37mDEBU[0m[07/06/2015 20:42:12] root handler registered                      
+[37mDEBU[0m[07/06/2015 20:42:12] serving static client files                  
+[37mDEBU[0m[07/06/2015 20:42:12] Router created                               
+[34mINFO[0m[07/06/2015 20:42:12] Server ready on port 8080                    
+[37mDEBU[0m[07/06/2015 20:42:14] Incoming request recieved                    
+
+[37mDEBU[0m[07/06/2015 20:43:34] logger initialized                           
+[34mINFO[0m[07/06/2015 20:43:34] connecting to mongodb                        
+[34mINFO[0m[07/06/2015 20:43:34] Connecting to mongodb @ mongodb://magicbuilder:alm123@162.243.101.6:8085/magicbuildertest 
+[34mINFO[0m[07/06/2015 20:43:34] mongodb connection successfull               
+[37mDEBU[0m[07/06/2015 20:43:34] Creating router                              
+[37mDEBU[0m[07/06/2015 20:43:34] login handler registered                     
+[37mDEBU[0m[07/06/2015 20:43:34] signup handler registered                    
+[37mDEBU[0m[07/06/2015 20:43:34] search handler registered                    
+[37mDEBU[0m[07/06/2015 20:43:34] root handler registered                      
+[37mDEBU[0m[07/06/2015 20:43:34] serving static client files                  
+[37mDEBU[0m[07/06/2015 20:43:34] Router created                               
+[34mINFO[0m[07/06/2015 20:43:34] Server ready on port 8080                    
+[37mDEBU[0m[07/06/2015 20:43:36] Incoming request recieved                    
+[37mDEBU[0m[07/06/2015 20:44:33] Incoming request recieved                    
+[37mDEBU[0m[07/06/2015 20:46:21] Incoming request recieved                    
+[37mDEBU[0m[07/06/2015 20:46:38] Incoming request recieved                    
+[37mDEBU[0m[07/06/2015 20:47:11] Incoming request recieved                    
+[37mDEBU[0m[07/06/2015 20:48:15] Incoming request recieved                    
+[37mDEBU[0m[07/06/2015 20:48:33] Incoming request recieved                    
+[37mDEBU[0m[07/06/2015 20:48:34] Incoming request recieved                    
+[37mDEBU[0m[07/06/2015 20:50:27] Incoming request recieved                    
+[37mDEBU[0m[07/06/2015 20:51:54] Incoming request recieved                    
+[37mDEBU[0m[07/06/2015 20:54:13] Incoming request recieved                    
+[37mDEBU[0m[07/06/2015 20:55:21] Incoming request recieved                    
+[37mDEBU[0m[07/06/2015 20:55:44] Incoming request recieved                    
+[37mDEBU[0m[07/06/2015 20:55:55] Incoming request recieved                    
+[37mDEBU[0m[07/06/2015 20:56:15] Incoming request recieved                    
+[37mDEBU[0m[07/06/2015 20:56:40] Incoming request recieved                    
+[37mDEBU[0m[07/06/2015 20:56:47] Incoming request recieved                    
+[37mDEBU[0m[07/06/2015 20:58:28] login handler called                         
+[34mINFO[0m[07/06/2015 20:58:28] User ChasingLogic has successfully logged in. 
+[37mDEBU[0m[07/06/2015 21:01:00] Incoming request recieved                    
+[37mDEBU[0m[07/06/2015 21:01:21] Incoming request recieved                    
+[37mDEBU[0m[07/06/2015 21:01:31] login handler called                         
+[34mINFO[0m[07/06/2015 21:01:31] User ChasingLogic has successfully logged in. 
+[37mDEBU[0m[07/06/2015 21:02:25] Incoming request recieved                    
+[37mDEBU[0m[07/06/2015 21:02:33] login handler called                         
+[34mINFO[0m[07/06/2015 21:02:33] User ChasingLogic has successfully logged in. 
+[37mDEBU[0m[07/06/2015 21:03:05] Incoming request recieved                    
+[37mDEBU[0m[07/06/2015 21:04:44] Incoming request recieved                    
+[37mDEBU[0m[07/06/2015 21:04:46] Incoming request recieved                    
+[37mDEBU[0m[07/06/2015 21:04:59] login handler called                         
+[34mINFO[0m[07/06/2015 21:04:59] User ChasingLogic has successfully logged in. 
+[37mDEBU[0m[07/06/2015 21:05:26] Incoming request recieved                    
+[37mDEBU[0m[07/06/2015 21:05:42] Incoming request recieved                    
+[37mDEBU[0m[07/06/2015 21:05:57] Incoming request recieved                    

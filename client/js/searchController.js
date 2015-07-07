@@ -1,1 +1,14 @@
-app.controller("searchController",function(o,e){o.game="magic",o.possibleCompletions=[],o.search=function(s){e.get("/search/"+o.game+"/"+s).success(function(e){console.log(e),o.possibleCompletions=e})}});
+app.controller("searchController", function($scope, $http){
+	$scope.game = "magic";
+
+	$scope.possibleCompletions = [];
+
+	$scope.search = function(input) {
+		$http.get("/search/" + $scope.game + "/" + input).success(function(data){
+			console.log(data);
+			$scope.possibleCompletions = data;
+		});
+	};
+
+
+});
