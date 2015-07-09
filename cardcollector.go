@@ -5,19 +5,18 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"reflect"
 	"strings"
 
 	"github.com/ChasingLogic/cardinal/handlers"
-	"github.com/ChasingLogic/configoslurper"
-	"github.com/Sirupsen/logrus"
 	"github.com/gorilla/mux"
 	"gopkg.in/mgo.v2"
+
+	logger "github.com/Sirupsen/logrus"
+	viper "github.com/spf13/viper"
 )
 
 var (
-	settings       map[string]string
-	logger         = logrus.New()
-	slurper        = configoslurper.GetBasicSlurper("application.properties")
 	session        *mgo.Session
 	db             *mgo.Database
 	userCollection *mgo.Collection
@@ -26,7 +25,7 @@ var (
 func initDB() {
 	var err error
 
-	dialURL := "mongodb://" + settings["dbuser"] + ":" + settings["dbpassword"] + "@" + settings["dbaddress"] + ":" + settings["dbport"] + "/" + settings["dbname"]
+	dialURL := "mongodb://" + viper.GetString("database.user") + ":" + viper.GetString("database.password") + "@" + viper.GetString("database.ip") + ":" + viper.GetString("database.port") + "/" + viper.GetString("database.name")
 	logger.Debug("Connecting to mongodb @ " + dialURL)
 	session, err = mgo.Dial(dialURL)
 
@@ -34,11 +33,11 @@ func initDB() {
 		logger.Fatalln(err.Error())
 	}
 
-	db = session.DB(settings["dbname"])
-	userCollection = db.C(settings["userCollection"])
+	db = session.DB(viper.GetString("dbname"))
+	userCollection = db.C(viper.GetString("database.userCollection"))
 }
 
-func loggerInit() (*os.File, logrus.Level) {
+func loggerInit() (*os.File, logger.Level) {
 	var logFile *os.File
 	var fileErr error
 	filename := "cardcollector.out"
@@ -65,94 +64,95 @@ func loggerInit() (*os.File, logrus.Level) {
 		}
 	}
 
-	switch strings.ToLower(settings["loglevel"]) {
+	switch strings.ToLower(viper.GetString("server.loglevel")) {
 
 	case "debug":
-		return logFile, logrus.DebugLevel
+		return logFile, logger.DebugLevel
 
 	case "info":
-		return logFile, logrus.InfoLevel
+		return logFile, logger.InfoLevel
 
 	case "warn":
-		return logFile, logrus.WarnLevel
+		return logFile, logger.WarnLevel
 
 	case "error":
-		return logFile, logrus.ErrorLevel
+		return logFile, logger.ErrorLevel
 
 	case "fatal":
-		return logFile, logrus.FatalLevel
+		return logFile, logger.FatalLevel
 
 	case "panic":
-		return logFile, logrus.PanicLevel
+		return logFile, logger.PanicLevel
 
 	default:
-		return logFile, logrus.InfoLevel
+		return logFile, logger.InfoLevel
 
 	}
 
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
-	logger.Debug("Incoming request recieved")
+	logger.Debug("root handler called")
 	http.ServeFile(w, r, "client/views/index.html")
 }
 
 func main() {
 
-	var serr error
-	settings, serr = slurper.Slurp()
-	if serr != nil {
-		logger.Fatalln(serr.Error())
-	}
+	viper.AddConfigPath("./")
+	viper.SetConfigFile("config.toml")
+	viper.ReadInConfig()
 
 	logFile, logLevel := loggerInit()
 	mwriter := io.MultiWriter(os.Stdout, logFile)
 
-	logger.Out = mwriter
-	logger.Level = logLevel
-	logger.Formatter = &logrus.TextFormatter{
+	logger.SetOutput(mwriter)
+	logger.SetLevel(logLevel)
+	logger.SetFormatter(&logger.TextFormatter{
 		FullTimestamp:   true,
 		TimestampFormat: "01/02/2006 15:04:05",
-	}
+	})
+
 	logger.Info("Cardinal starting")
-	logger.Debug("logger initialized")
 	logger.Info("Log file: " + logFile.Name())
 	logger.Info("=========Settings===========")
-	for k, v := range settings {
-		logger.Info(k + " = " + v)
+	for k, v := range viper.AllSettings() {
+		if reflect.TypeOf(v).Kind() == reflect.Map {
+			logger.Infof("%s", k)
+			for sk, sv := range viper.GetStringMapString(k) {
+				logger.Infof("\t%s = %s", sk, sv)
+			}
+		} else {
+			logger.Infof("%s = %s", k, v)
+		}
+
 	}
 	logger.Info("============================")
 
 	logger.Info("connecting to mongodb")
+
 	initDB()
 	defer session.Close()
+
 	logger.Info("mongodb connection successful")
 
-	logger.Debug("Creating router")
 	router := mux.NewRouter()
 
 	router.HandleFunc("/userAuth/login", func(w http.ResponseWriter, r *http.Request) {
 		handlers.LoginHandler(w, r, userCollection)
 	}).Methods("POST")
-	logger.Debug("login handler registered")
+
 	router.HandleFunc("/userAuth/signup", func(w http.ResponseWriter, r *http.Request) {
 		handlers.SignupHandler(w, r, userCollection)
 	}).Methods("POST")
-	logger.Debug("signup handler registered")
+
 	router.HandleFunc("/api/v1/cardSearch", func(w http.ResponseWriter, r *http.Request) {
 		handlers.CardSearch(w, r, db)
 	}).Methods("GET")
-	logger.Debug("search handler registered")
+
 	router.HandleFunc("/", indexHandler)
-	logger.Debug("root handler registered")
 
 	router.PathPrefix("/").Handler(http.FileServer(http.Dir("client/")))
-	logger.Debug("serving static client files")
 
-	logger.Debug("Router created")
-	if settings["port"] == "" {
-		settings["port"] = "8080"
-	}
-	logger.Info("Server ready on port " + settings["port"])
-	http.ListenAndServe(":"+settings["port"], router)
+	logger.Info("Server ready on port " + viper.GetString("server.port"))
+	http.ListenAndServe(viper.GetString("server.ip")+":"+viper.GetString("server.port"), router)
 }

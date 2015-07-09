@@ -28,8 +28,6 @@ func CardSearch(w http.ResponseWriter, r *http.Request, db *mgo.Database) {
 		logger.Error(ferr)
 	}
 
-	logger.Debug(result)
-
 	marshaledResults, merr := json.Marshal(result)
 	if merr != nil {
 		logger.Error(ferr)
