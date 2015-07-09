@@ -3,7 +3,7 @@ var monk = require('monk');
 var allCards = require("./AllCards-x.json");
 var dbconfig = require("../dbconfig.json");
 var db = monk(dbconfig.user + ':' + dbconfig.password + '@' + dbconfig.url + ':' + dbconfig.port + '/' + dbconfig.dbname);
-var cardCollection = db.get('cards');
+var cardCollection = db.get('magic');
 var totalCards = 0;
 var cardsAdded = 0;
 

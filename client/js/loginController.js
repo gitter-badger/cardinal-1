@@ -1,8 +1,8 @@
 app.controller('loginController', function($scope, $http, $location, authService){
     $scope.user = {};
-    $scope.user.Username = "";
-    $scope.user.Password = "";
-    $scope.user.Email = "";
+    $scope.user.username = "";
+    $scope.user.password = "";
+    $scope.user.email = "";
     $scope.user.$error = {};
 
     $scope.checkIfEmpty = function() {
@@ -37,7 +37,7 @@ app.controller('loginController', function($scope, $http, $location, authService
 
         console.log("logging in");
 
-        $http.post('/login', angular.toJson($scope.user)).success(function(data){
+        $http.post('/userAuth/login', angular.toJson($scope.user)).success(function(data){
             if(data !== 403) {
                 console.log("Login sucess");
                 $scope.user = data;
@@ -68,7 +68,7 @@ app.controller('loginController', function($scope, $http, $location, authService
         }
 
         console.log("POSTING");
-        $http.post('/signup', angular.toJson($scope.user)).success(function(data, status){
+        $http.post('/userAuth/signup', angular.toJson($scope.user)).success(function(data, status){
             console.log(data);
             if(data !== 403){
                 $scope.user = data;

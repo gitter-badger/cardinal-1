@@ -4,7 +4,7 @@ app.controller("searchController", function($scope, $http){
 	$scope.possibleCompletions = [];
 
 	$scope.search = function(input) {
-		$http.get("/search/" + $scope.game + "/" + input).success(function(data){
+		$http.get("/api/v1/cardSearch?game=" + $scope.game + "&cardName=" + input).success(function(data){
 			console.log(data);
 			$scope.possibleCompletions = data;
 		});

@@ -9,16 +9,13 @@ import (
 
 	"github.com/ChasingLogic/cardinal/cards"
 	logger "github.com/Sirupsen/logrus"
-	"github.com/gorilla/mux"
 )
 
 // CardSearch is an HTTP Handler which searches for a card. Takes the game and name of the card from the url
 func CardSearch(w http.ResponseWriter, r *http.Request, db *mgo.Database) {
-	vars := mux.Vars(r)
-	searchTerm := vars["name"]
-	game := vars["game"]
-	logger.Debug(game)
-	logger.Debug(searchTerm)
+	searchTerm := r.FormValue("cardName")
+	game := r.FormValue("game")
+	logger.Debug("Searching for " + searchTerm + " in " + game)
 
 	if game == "hearthstone" {
 		// Not quite ready for hearthstone

@@ -131,15 +131,15 @@ func main() {
 	logger.Debug("Creating router")
 	router := mux.NewRouter()
 
-	router.HandleFunc("/user/login", func(w http.ResponseWriter, r *http.Request) {
+	router.HandleFunc("/userAuth/login", func(w http.ResponseWriter, r *http.Request) {
 		handlers.LoginHandler(w, r, userCollection)
 	}).Methods("POST")
 	logger.Debug("login handler registered")
-	router.HandleFunc("/user/signup", func(w http.ResponseWriter, r *http.Request) {
+	router.HandleFunc("/userAuth/signup", func(w http.ResponseWriter, r *http.Request) {
 		handlers.SignupHandler(w, r, userCollection)
 	}).Methods("POST")
 	logger.Debug("signup handler registered")
-	router.HandleFunc("/api/v1/cardSearch?game={game}&cardName={name}", func(w http.ResponseWriter, r *http.Request) {
+	router.HandleFunc("/api/v1/cardSearch", func(w http.ResponseWriter, r *http.Request) {
 		handlers.CardSearch(w, r, db)
 	}).Methods("GET")
 	logger.Debug("search handler registered")
