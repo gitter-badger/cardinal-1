@@ -7,6 +7,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/ChasingLogic/cardinal/handlers"
 	"github.com/ChasingLogic/configoslurper"
 	"github.com/Sirupsen/logrus"
 	"github.com/gorilla/mux"
@@ -14,44 +15,33 @@ import (
 )
 
 var (
-	settings              map[string]string
-	logger                = logrus.New()
-	slurper               = configoslurper.GetBasicSlurper("application.properties")
-	db                    *mgo.Session
-	magicCollection       *mgo.Collection
-	hearthStoneCollection *mgo.Collection
-	userCollection        *mgo.Collection
+	settings       map[string]string
+	logger         = logrus.New()
+	slurper        = configoslurper.GetBasicSlurper("application.properties")
+	session        *mgo.Session
+	db             *mgo.Database
+	userCollection *mgo.Collection
 )
 
 func initDB() {
 	var err error
 
 	dialURL := "mongodb://" + settings["dbuser"] + ":" + settings["dbpassword"] + "@" + settings["dbaddress"] + ":" + settings["dbport"] + "/" + settings["dbname"]
-	logger.Info("Connecting to mongodb @ " + dialURL)
-	db, err = mgo.Dial(dialURL)
+	logger.Debug("Connecting to mongodb @ " + dialURL)
+	session, err = mgo.Dial(dialURL)
 
-	errCheck(err)
 	if err != nil {
 		logger.Fatalln(err.Error())
 	}
 
-	hearthStoneCollection = db.DB(settings["dbname"]).C("hearthstonecards")
-	userCollection = db.DB(settings["dbname"]).C("users")
-	magicCollection = db.DB(settings["dbname"]).C("magiccards")
-}
-
-func errCheck(err error) {
-	if err != nil {
-		logger.Warn(err.Error())
-	}
+	db = session.DB(settings["dbname"])
+	userCollection = db.C(settings["userCollection"])
 }
 
 func loggerInit() (*os.File, logrus.Level) {
 	var logFile *os.File
 	var fileErr error
 	filename := "cardcollector.out"
-
-	fmt.Println("Log File: " + filename)
 
 	if _, err := os.Stat(filename); err == nil {
 		logFile, fileErr = os.OpenFile(filename, os.O_RDWR|os.O_APPEND, 0660)
@@ -108,7 +98,6 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	fmt.Println("Server starting")
 
 	var serr error
 	settings, serr = slurper.Slurp()
@@ -125,21 +114,34 @@ func main() {
 		FullTimestamp:   true,
 		TimestampFormat: "01/02/2006 15:04:05",
 	}
+	logger.Info("Cardinal starting")
 	logger.Debug("logger initialized")
+	logger.Info("Log file: " + logFile.Name())
+	logger.Info("=========Settings===========")
+	for k, v := range settings {
+		logger.Info(k + " = " + v)
+	}
+	logger.Info("============================")
 
 	logger.Info("connecting to mongodb")
 	initDB()
-	defer db.Close()
-	logger.Info("mongodb connection successfull")
+	defer session.Close()
+	logger.Info("mongodb connection successful")
 
 	logger.Debug("Creating router")
 	router := mux.NewRouter()
 
-	router.HandleFunc("/login", loginHandler).Methods("POST")
+	router.HandleFunc("/user/login", func(w http.ResponseWriter, r *http.Request) {
+		handlers.LoginHandler(w, r, userCollection)
+	}).Methods("POST")
 	logger.Debug("login handler registered")
-	router.HandleFunc("/signup", signupHandler).Methods("POST")
+	router.HandleFunc("/user/signup", func(w http.ResponseWriter, r *http.Request) {
+		handlers.SignupHandler(w, r, userCollection)
+	}).Methods("POST")
 	logger.Debug("signup handler registered")
-	router.HandleFunc("/search/{game}/{name}", searchHandler).Methods("GET")
+	router.HandleFunc("/api/v1/cardSearch?game={game}&cardName={name}", func(w http.ResponseWriter, r *http.Request) {
+		handlers.CardSearch(w, r, db)
+	}).Methods("GET")
 	logger.Debug("search handler registered")
 	router.HandleFunc("/", indexHandler)
 	logger.Debug("root handler registered")
