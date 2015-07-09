@@ -1,4 +1,4 @@
-db.properties
+*.properties
 client/node_modules/*
 client/bower_components/*
 *.log

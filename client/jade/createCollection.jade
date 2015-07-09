@@ -9,6 +9,6 @@ md-content(ng-controller="searchController")
 		md-search-text-change="search(searchText)" )
 
 		md-item-template
-			span {{item.Name}}
+			span {{item.name}}
 			//- Not sure why this doesn't work
-			img(ng-src="{{item.ImageNames[0]}}")
+			img(ng-src="{{item.imageNames[0]}}")

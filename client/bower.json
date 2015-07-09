@@ -16,10 +16,14 @@
   ],
   "dependencies": {
     "angular-material": "~0.10.0",
-    "angular-ui-router": "~0.2.15",
     "angular": "~1.4.1",
     "bootstrap": "~3.3.5",
     "md-data-table": "*",
-    "angular-messages": "~1.4.1"
+    "angular-messages": "~1.4.1",
+    "angular-route": "~1.4.2"
+  },
+  "resolutions": {
+    "angular-material": "~0.9.6",
+    "angular": "1.4.2"
   }
 }

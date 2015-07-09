@@ -1,0 +1,8 @@
+dbuser=mongouser
+dbpassword=mongotest
+dbport=0000
+dbname=test
+dbaddress=0.0.0.0
+userCollection=users
+loglevel=info
+port=8080

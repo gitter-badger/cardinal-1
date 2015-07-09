@@ -1,0 +1,199 @@
+[37mDEBU[0m[07/08/2015 23:33:15] logger initialized                           
+[37mDEBU[0m[07/08/2015 23:33:15] =========Settings===========                 
+[37mDEBU[0m[07/08/2015 23:33:15] userCollection = users                       
+[37mDEBU[0m[07/08/2015 23:33:15] loglevel = debug                             
+[37mDEBU[0m[07/08/2015 23:33:15] port = 8080                                  
+[37mDEBU[0m[07/08/2015 23:33:15] dbuser = magicbuilder                        
+[37mDEBU[0m[07/08/2015 23:33:15] dbpassword = alm123                          
+[37mDEBU[0m[07/08/2015 23:33:15] dbport = 8085                                
+[37mDEBU[0m[07/08/2015 23:33:15] dbname = magicbuildertest                    
+[37mDEBU[0m[07/08/2015 23:33:15] dbaddress = 162.243.101.6                    
+[37mDEBU[0m[07/08/2015 23:33:15] ============================                 
+[34mINFO[0m[07/08/2015 23:33:15] connecting to mongodb                        
+[34mINFO[0m[07/08/2015 23:33:15] Connecting to mongodb @ mongodb://magicbuilder:alm123@162.243.101.6:8085/magicbuildertest 
+[34mINFO[0m[07/08/2015 23:33:15] mongodb connection successful                
+[37mDEBU[0m[07/08/2015 23:33:15] Creating router                              
+[37mDEBU[0m[07/08/2015 23:33:15] login handler registered                     
+[37mDEBU[0m[07/08/2015 23:33:15] signup handler registered                    
+[37mDEBU[0m[07/08/2015 23:33:15] search handler registered                    
+[37mDEBU[0m[07/08/2015 23:33:15] root handler registered                      
+[37mDEBU[0m[07/08/2015 23:33:15] serving static client files                  
+[37mDEBU[0m[07/08/2015 23:33:15] Router created                               
+[34mINFO[0m[07/08/2015 23:33:15] Server ready on port 8080                    
+
+[37mDEBU[0m[07/08/2015 23:36:39] logger initialized                           
+[34mINFO[0m[07/08/2015 23:36:39] Log file: cardcollector.out                  
+[34mINFO[0m[07/08/2015 23:36:39] =========Settings===========                 
+[34mINFO[0m[07/08/2015 23:36:39] loglevel = debug                             
+[34mINFO[0m[07/08/2015 23:36:39] port = 8080                                  
+[34mINFO[0m[07/08/2015 23:36:39] dbuser = magicbuilder                        
+[34mINFO[0m[07/08/2015 23:36:39] dbpassword = alm123                          
+[34mINFO[0m[07/08/2015 23:36:39] dbport = 8085                                
+[34mINFO[0m[07/08/2015 23:36:39] dbname = magicbuildertest                    
+[34mINFO[0m[07/08/2015 23:36:39] dbaddress = 162.243.101.6                    
+[34mINFO[0m[07/08/2015 23:36:39] userCollection = users                       
+[34mINFO[0m[07/08/2015 23:36:39] ============================                 
+[34mINFO[0m[07/08/2015 23:36:39] connecting to mongodb                        
+[34mINFO[0m[07/08/2015 23:36:39] Connecting to mongodb @ mongodb://magicbuilder:alm123@162.243.101.6:8085/magicbuildertest 
+[34mINFO[0m[07/08/2015 23:36:40] mongodb connection successful                
+[37mDEBU[0m[07/08/2015 23:36:40] Creating router                              
+[37mDEBU[0m[07/08/2015 23:36:40] login handler registered                     
+[37mDEBU[0m[07/08/2015 23:36:40] signup handler registered                    
+[37mDEBU[0m[07/08/2015 23:36:40] search handler registered                    
+[37mDEBU[0m[07/08/2015 23:36:40] root handler registered                      
+[37mDEBU[0m[07/08/2015 23:36:40] serving static client files                  
+[37mDEBU[0m[07/08/2015 23:36:40] Router created                               
+[34mINFO[0m[07/08/2015 23:36:40] Server ready on port 8080                    
+
+[34mINFO[0m[07/08/2015 23:37:16] Cardinal starting                            
+[37mDEBU[0m[07/08/2015 23:37:16] logger initialized                           
+[34mINFO[0m[07/08/2015 23:37:16] Log file: cardcollector.out                  
+[34mINFO[0m[07/08/2015 23:37:16] =========Settings===========                 
+[34mINFO[0m[07/08/2015 23:37:16] dbport = 8085                                
+[34mINFO[0m[07/08/2015 23:37:16] dbname = magicbuildertest                    
+[34mINFO[0m[07/08/2015 23:37:16] dbaddress = 162.243.101.6                    
+[34mINFO[0m[07/08/2015 23:37:16] userCollection = users                       
+[34mINFO[0m[07/08/2015 23:37:16] loglevel = debug                             
+[34mINFO[0m[07/08/2015 23:37:16] port = 8080                                  
+[34mINFO[0m[07/08/2015 23:37:16] dbuser = magicbuilder                        
+[34mINFO[0m[07/08/2015 23:37:16] dbpassword = alm123                          
+[34mINFO[0m[07/08/2015 23:37:16] ============================                 
+[34mINFO[0m[07/08/2015 23:37:16] connecting to mongodb                        
+[34mINFO[0m[07/08/2015 23:37:16] Connecting to mongodb @ mongodb://magicbuilder:alm123@162.243.101.6:8085/magicbuildertest 
+[34mINFO[0m[07/08/2015 23:37:16] mongodb connection successful                
+[37mDEBU[0m[07/08/2015 23:37:16] Creating router                              
+[37mDEBU[0m[07/08/2015 23:37:16] login handler registered                     
+[37mDEBU[0m[07/08/2015 23:37:16] signup handler registered                    
+[37mDEBU[0m[07/08/2015 23:37:16] search handler registered                    
+[37mDEBU[0m[07/08/2015 23:37:16] root handler registered                      
+[37mDEBU[0m[07/08/2015 23:37:16] serving static client files                  
+[37mDEBU[0m[07/08/2015 23:37:16] Router created                               
+[34mINFO[0m[07/08/2015 23:37:16] Server ready on port 8080                    
+[37mDEBU[0m[07/08/2015 23:38:16] Incoming request recieved                    
+
+[34mINFO[0m[07/08/2015 23:53:23] Cardinal starting                            
+[37mDEBU[0m[07/08/2015 23:53:23] logger initialized                           
+[34mINFO[0m[07/08/2015 23:53:23] Log file: cardcollector.out                  
+[34mINFO[0m[07/08/2015 23:53:23] =========Settings===========                 
+[34mINFO[0m[07/08/2015 23:53:23] dbpassword = alm123                          
+[34mINFO[0m[07/08/2015 23:53:23] dbport = 8085                                
+[34mINFO[0m[07/08/2015 23:53:23] dbname = magicbuildertest                    
+[34mINFO[0m[07/08/2015 23:53:23] dbaddress = 162.243.101.6                    
+[34mINFO[0m[07/08/2015 23:53:23] userCollection = users                       
+[34mINFO[0m[07/08/2015 23:53:23] loglevel = debug                             
+[34mINFO[0m[07/08/2015 23:53:23] port = 8080                                  
+[34mINFO[0m[07/08/2015 23:53:23] dbuser = magicbuilder                        
+[34mINFO[0m[07/08/2015 23:53:23] ============================                 
+[34mINFO[0m[07/08/2015 23:53:23] connecting to mongodb                        
+[37mDEBU[0m[07/08/2015 23:53:23] Connecting to mongodb @ mongodb://magicbuilder:alm123@162.243.101.6:8085/magicbuildertest 
+[34mINFO[0m[07/08/2015 23:53:24] mongodb connection successful                
+[37mDEBU[0m[07/08/2015 23:53:24] Creating router                              
+[37mDEBU[0m[07/08/2015 23:53:24] login handler registered                     
+[37mDEBU[0m[07/08/2015 23:53:24] signup handler registered                    
+[37mDEBU[0m[07/08/2015 23:53:24] search handler registered                    
+[37mDEBU[0m[07/08/2015 23:53:24] root handler registered                      
+[37mDEBU[0m[07/08/2015 23:53:24] serving static client files                  
+[37mDEBU[0m[07/08/2015 23:53:24] Router created                               
+[34mINFO[0m[07/08/2015 23:53:24] Server ready on port 8080                    
+[37mDEBU[0m[07/08/2015 23:53:28] Incoming request recieved                    
+
+[34mINFO[0m[07/09/2015 00:04:13] Cardinal starting                            
+[37mDEBU[0m[07/09/2015 00:04:13] logger initialized                           
+[34mINFO[0m[07/09/2015 00:04:13] Log file: cardcollector.out                  
+[34mINFO[0m[07/09/2015 00:04:13] =========Settings===========                 
+[34mINFO[0m[07/09/2015 00:04:13] dbpassword = alm123                          
+[34mINFO[0m[07/09/2015 00:04:13] dbport = 8085                                
+[34mINFO[0m[07/09/2015 00:04:13] dbname = magicbuildertest                    
+[34mINFO[0m[07/09/2015 00:04:13] dbaddress = 162.243.101.6                    
+[34mINFO[0m[07/09/2015 00:04:13] userCollection = users                       
+[34mINFO[0m[07/09/2015 00:04:13] loglevel = debug                             
+[34mINFO[0m[07/09/2015 00:04:13] port = 8080                                  
+[34mINFO[0m[07/09/2015 00:04:13] dbuser = magicbuilder                        
+[34mINFO[0m[07/09/2015 00:04:13] ============================                 
+[34mINFO[0m[07/09/2015 00:04:13] connecting to mongodb                        
+[37mDEBU[0m[07/09/2015 00:04:13] Connecting to mongodb @ mongodb://magicbuilder:alm123@162.243.101.6:8085/magicbuildertest 
+[34mINFO[0m[07/09/2015 00:04:13] mongodb connection successful                
+[37mDEBU[0m[07/09/2015 00:04:13] Creating router                              
+[37mDEBU[0m[07/09/2015 00:04:13] login handler registered                     
+[37mDEBU[0m[07/09/2015 00:04:13] signup handler registered                    
+[37mDEBU[0m[07/09/2015 00:04:13] search handler registered                    
+[37mDEBU[0m[07/09/2015 00:04:13] root handler registered                      
+[37mDEBU[0m[07/09/2015 00:04:13] serving static client files                  
+[37mDEBU[0m[07/09/2015 00:04:13] Router created                               
+[34mINFO[0m[07/09/2015 00:04:13] Server ready on port 8080                    
+
+[34mINFO[0m[07/09/2015 00:04:54] Cardinal starting                            
+[37mDEBU[0m[07/09/2015 00:04:54] logger initialized                           
+[34mINFO[0m[07/09/2015 00:04:54] Log file: cardcollector.out                  
+[34mINFO[0m[07/09/2015 00:04:54] =========Settings===========                 
+[34mINFO[0m[07/09/2015 00:04:54] dbpassword = alm123                          
+[34mINFO[0m[07/09/2015 00:04:54] dbport = 8085                                
+[34mINFO[0m[07/09/2015 00:04:54] dbname = magicbuildertest                    
+[34mINFO[0m[07/09/2015 00:04:54] dbaddress = 162.243.101.6                    
+[34mINFO[0m[07/09/2015 00:04:54] userCollection = users                       
+[34mINFO[0m[07/09/2015 00:04:54] loglevel = debug                             
+[34mINFO[0m[07/09/2015 00:04:54] port = 8080                                  
+[34mINFO[0m[07/09/2015 00:04:54] dbuser = magicbuilder                        
+[34mINFO[0m[07/09/2015 00:04:54] ============================                 
+[34mINFO[0m[07/09/2015 00:04:54] connecting to mongodb                        
+[37mDEBU[0m[07/09/2015 00:04:54] Connecting to mongodb @ mongodb://magicbuilder:alm123@162.243.101.6:8085/magicbuildertest 
+[34mINFO[0m[07/09/2015 00:04:54] mongodb connection successful                
+[37mDEBU[0m[07/09/2015 00:04:54] Creating router                              
+[37mDEBU[0m[07/09/2015 00:04:54] login handler registered                     
+[37mDEBU[0m[07/09/2015 00:04:54] signup handler registered                    
+[37mDEBU[0m[07/09/2015 00:04:54] search handler registered                    
+[37mDEBU[0m[07/09/2015 00:04:54] root handler registered                      
+[37mDEBU[0m[07/09/2015 00:04:54] serving static client files                  
+[37mDEBU[0m[07/09/2015 00:04:54] Router created                               
+[34mINFO[0m[07/09/2015 00:04:54] Server ready on port 8080                    
+[37mDEBU[0m[07/09/2015 00:05:52] Incoming request recieved                    
+
+[34mINFO[0m[07/09/2015 00:06:02] Cardinal starting                            
+[37mDEBU[0m[07/09/2015 00:06:02] logger initialized                           
+[34mINFO[0m[07/09/2015 00:06:02] Log file: cardcollector.out                  
+[34mINFO[0m[07/09/2015 00:06:02] =========Settings===========                 
+[34mINFO[0m[07/09/2015 00:06:02] dbuser = magicbuilder                        
+[34mINFO[0m[07/09/2015 00:06:02] dbpassword = alm123                          
+[34mINFO[0m[07/09/2015 00:06:02] dbport = 8085                                
+[34mINFO[0m[07/09/2015 00:06:02] dbname = magicbuildertest                    
+[34mINFO[0m[07/09/2015 00:06:02] dbaddress = 162.243.101.6                    
+[34mINFO[0m[07/09/2015 00:06:02] userCollection = users                       
+[34mINFO[0m[07/09/2015 00:06:02] loglevel = debug                             
+[34mINFO[0m[07/09/2015 00:06:02] port = 8080                                  
+[34mINFO[0m[07/09/2015 00:06:02] ============================                 
+[34mINFO[0m[07/09/2015 00:06:02] connecting to mongodb                        
+[37mDEBU[0m[07/09/2015 00:06:02] Connecting to mongodb @ mongodb://magicbuilder:alm123@162.243.101.6:8085/magicbuildertest 
+[34mINFO[0m[07/09/2015 00:06:02] mongodb connection successful                
+[37mDEBU[0m[07/09/2015 00:06:02] Creating router                              
+[37mDEBU[0m[07/09/2015 00:06:02] login handler registered                     
+[37mDEBU[0m[07/09/2015 00:06:02] signup handler registered                    
+[37mDEBU[0m[07/09/2015 00:06:02] search handler registered                    
+[37mDEBU[0m[07/09/2015 00:06:02] root handler registered                      
+[37mDEBU[0m[07/09/2015 00:06:02] serving static client files                  
+[37mDEBU[0m[07/09/2015 00:06:02] Router created                               
+[34mINFO[0m[07/09/2015 00:06:02] Server ready on port 8080                    
+
+[34mINFO[0m[07/09/2015 00:08:12] Cardinal starting                            
+[37mDEBU[0m[07/09/2015 00:08:12] logger initialized                           
+[34mINFO[0m[07/09/2015 00:08:12] Log file: cardcollector.out                  
+[34mINFO[0m[07/09/2015 00:08:12] =========Settings===========                 
+[34mINFO[0m[07/09/2015 00:08:12] dbname = magicbuildertest                    
+[34mINFO[0m[07/09/2015 00:08:12] dbaddress = 162.243.101.6                    
+[34mINFO[0m[07/09/2015 00:08:12] userCollection = users                       
+[34mINFO[0m[07/09/2015 00:08:12] loglevel = debug                             
+[34mINFO[0m[07/09/2015 00:08:12] port = 8080                                  
+[34mINFO[0m[07/09/2015 00:08:12] dbuser = magicbuilder                        
+[34mINFO[0m[07/09/2015 00:08:12] dbpassword = alm123                          
+[34mINFO[0m[07/09/2015 00:08:12] dbport = 8085                                
+[34mINFO[0m[07/09/2015 00:08:12] ============================                 
+[34mINFO[0m[07/09/2015 00:08:12] connecting to mongodb                        
+[37mDEBU[0m[07/09/2015 00:08:12] Connecting to mongodb @ mongodb://magicbuilder:alm123@162.243.101.6:8085/magicbuildertest 
+[34mINFO[0m[07/09/2015 00:08:12] mongodb connection successful                
+[37mDEBU[0m[07/09/2015 00:08:12] Creating router                              
+[37mDEBU[0m[07/09/2015 00:08:12] login handler registered                     
+[37mDEBU[0m[07/09/2015 00:08:12] signup handler registered                    
+[37mDEBU[0m[07/09/2015 00:08:12] search handler registered                    
+[37mDEBU[0m[07/09/2015 00:08:12] root handler registered                      
+[37mDEBU[0m[07/09/2015 00:08:12] serving static client files                  
+[37mDEBU[0m[07/09/2015 00:08:12] Router created                               
+[34mINFO[0m[07/09/2015 00:08:12] Server ready on port 8080                    
