@@ -6,9 +6,11 @@ md-content(ng-controller="searchController")
 		md-items="item in possibleCompletions"
 		md-item-text="item.Name"
 		md-min-length="3"
+		md-delay="2000"
 		md-search-text-change="search(searchText)" )
 
 		md-item-template
 			span {{item.name}}
 			//- Not sure why this doesn't work
-			img(ng-src="{{item.imageNames[0]}}")
+			img(ng-src="http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={{item.multiverseid}}&type=card")
+		md-not-found No cards match your search

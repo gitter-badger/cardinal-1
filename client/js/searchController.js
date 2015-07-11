@@ -7,6 +7,7 @@ app.controller("searchController", function($scope, $http){
 		$http.get("/api/v1/cardSearch?game=" + $scope.game + "&cardName=" + input).success(function(data){
 			console.log(data);
 			$scope.possibleCompletions = data;
+			$scope.$apply();
 		});
 	};
 
