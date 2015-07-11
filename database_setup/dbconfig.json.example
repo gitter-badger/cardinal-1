@@ -1,0 +1,7 @@
+{
+    "user": "user",
+    "password": "pass",
+    "url": "0.0.0.0",
+    "port": "0000",
+    "dbname": "db"
+}

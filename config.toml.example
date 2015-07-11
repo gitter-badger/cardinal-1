@@ -1,0 +1,14 @@
+[server]
+loglevel = "debug"
+ip = "0.0.0.0"
+port = "8080"
+serveClientFiles = "false"
+clientFilesLocation = ""
+
+[database]
+user = "user"
+password = "pass"
+port = "0000"
+name = "db"
+ip = "0.0.0.0"
+userCollection = "users"
