@@ -2,6 +2,7 @@
 *.toml
 client/node_modules/*
 client/bower_components/*
+*/node_modules/*
 *.log
 */*.log
 database_setup/dbconfig.json
