@@ -2,40 +2,40 @@ package cards
 
 // Legality is for Magic Cards there is a nested JSON object which contains the Legality information about each card.
 type Legality struct {
-	Modern           string
-	Legacy           string
-	Vintage          string
-	Freeform         string
-	Prismatic        string
-	TribalWarsLegacy string
-	Singleton        string
-	Commander        string
+	Modern           string `json:"modern"`
+	Legacy           string `json:"legacy"`
+	Vintage          string `json:"vintage"`
+	Freeform         string `json:"freeform"`
+	Prismatic        string `json:"prismatic"`
+	TribalWarsLegacy string `json:"tribalwarslegacy"`
+	Singleton        string `json:"singleton"`
+	Commander        string `json:"commander"`
 }
 
 // ForeignName is also for Magic Cards there is a nested JSON object for each foreign name of a given card.
 type ForeignName struct {
-	Language string
-	Name     string
+	Language string `json:"language"`
+	Name     string `json:"name"`
 }
 
 // MagicCard represents a Magic: The Gathering card and implements the Card Interface
 type MagicCard struct {
-	ID           string
-	Layout       string
-	Name         string
-	ManaCost     string
-	Cmc          int
-	Colors       []string
-	Type         string
-	Types        []string
-	SubTypes     []string
-	Power        int
-	Toughness    int
-	Text         string
-	ForeignNames []ForeignName
-	Printings    []string
-	Legalities   Legality
-	ImageNames   []string
+	ID           string        `json:"id"`
+	Layout       string        `json:"layout"`
+	Name         string        `json:"name"`
+	ManaCost     string        `json:"manaCost"`
+	Cmc          int           `json:"cmc"`
+	Colors       []string      `json:"colors"`
+	Type         string        `json:"type"`
+	Types        []string      `json:"types"`
+	SubTypes     []string      `json:"subTypes"`
+	Power        int           `json:"power"`
+	Toughness    int           `json:"toughness"`
+	Text         string        `json:"text"`
+	ForeignNames []ForeignName `json:"foreignNames"`
+	Printings    []string      `json:"printings"`
+	Legalities   Legality      `json:"legalities"`
+	ImageNames   []string      `json:"imageNames"`
 }
 
 // GetID implements the Card Interface
