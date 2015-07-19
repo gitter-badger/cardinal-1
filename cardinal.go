@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/ChasingLogic/cardinal/handlers"
+	"github.com/chasinglogic/cardinal/handlers"
 	"github.com/gorilla/mux"
 	"gopkg.in/mgo.v2"
 

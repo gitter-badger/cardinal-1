@@ -178,5 +178,7 @@ func SSOHandler(w http.ResponseWriter, r *http.Request, collection *mgo.Collecti
 		}
 
 		w.Write(marshaledU)
+	} else {
+		w.WriteHeader(http.StatusUnauthorized)
 	}
 }
