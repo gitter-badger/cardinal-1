@@ -2,8 +2,11 @@ package handlers
 
 import (
 	"crypto/md5"
+	"crypto/rand"
+	"encoding/base64"
 	"encoding/json"
 	"net/http"
+	"time"
 
 	"github.com/ChasingLogic/cardinal/cards"
 	logger "github.com/Sirupsen/logrus"
@@ -12,7 +15,10 @@ import (
 )
 
 var (
-	hasher = md5.New()
+	hasher     = md5.New()
+	ssoExpires = make(map[string]time.Time)
+	sso        = make(map[string]string)
+	keySize    = 32
 )
 
 // DashItem is the basic form of a "Dash Card" which displays various information to the user.
@@ -26,8 +32,45 @@ type DashItem struct {
 type User struct {
 	Username    string             `json:"username"`
 	Password    []byte             `json:"-"`
+	Token       string             `json:"authToken"`
 	DashItems   []DashItem         `json:"dashitems"`
 	Collections []cards.Collection `json:"collections"`
+}
+
+func generateToken(un string) {
+	unique := false
+
+	for !unique {
+		buffer := make([]byte, keySize)
+		_, err := rand.Read(buffer)
+		if err != nil {
+			logger.Fatalln(err.Error())
+		}
+
+		token := base64.URLEncoding.EncodeToString(buffer)
+		_, exists := ssoExpires[token]
+
+		if !exists {
+			unique = true
+		}
+	}
+}
+
+// This is meant to be run as a go-routine on a timer.
+func cleanOutSso() {
+	for user, token := range sso {
+		if time.Since(ssoExpires[token]).Minutes() > 30 {
+			delete(ssoExpires, token)
+			delete(sso, user)
+		}
+	}
+}
+
+func isLoggedInSSO(un string) bool {
+	if sso[un] != "" {
+		return true
+	}
+	return false
 }
 
 // LoginHandler will log a user in if they exist otherwise will return an error.
