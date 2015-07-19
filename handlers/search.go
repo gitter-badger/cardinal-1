@@ -7,8 +7,8 @@ import (
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 
-	"github.com/ChasingLogic/cardinal/cards"
 	logger "github.com/Sirupsen/logrus"
+	"github.com/chasinglogic/cardinal/cards"
 )
 
 // CardSearch is an HTTP Handler which searches for a card. Takes the game and name of the card from the url

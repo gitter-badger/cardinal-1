@@ -8,8 +8,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/ChasingLogic/cardinal/cards"
 	logger "github.com/Sirupsen/logrus"
+	"github.com/chasinglogic/cardinal/cards"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 )
