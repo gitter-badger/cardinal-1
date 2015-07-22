@@ -145,13 +145,13 @@ func main() {
 		handlers.SignupHandler(w, r, userCollection)
 	}).Methods("POST")
 
+	router.HandleFunc("/api/v1/createCollection", func(w http.ResponseWriter, r *http.Request) {
+		handlers.CreateCollection(w, r, userCollection)
+	}).Methods("POST")
+
 	router.HandleFunc("/api/v1/cardSearch", func(w http.ResponseWriter, r *http.Request) {
 		handlers.CardSearch(w, r, db)
 	}).Methods("GET")
-
-	router.HandleFunc("/api/v1/createCollection", func(w http.ResponseWriter, r *http.Request) {
-		handlers.CreateCollection(w, r, db)
-	}).Methods("POST")
 
 	if viper.GetBool("server.serveClientFiles") {
 		logger.Info("Serving client files, I recommend using NGINX instead.")

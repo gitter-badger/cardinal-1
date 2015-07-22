@@ -19,18 +19,20 @@ func CardSearch(w http.ResponseWriter, r *http.Request, db *mgo.Database) {
 
 	if game == "hearthstone" {
 		// Not quite ready for hearthstone
-		w.WriteHeader(500)
+		w.WriteHeader(http.StatusNotImplemented)
 	}
 
 	var result []cards.MagicCard
 	ferr := db.C(game).Find(bson.M{"name": &bson.M{"$regex": ".*" + searchTerm + ".*", "$options": "i"}}).All(&result)
 	if ferr != nil {
 		logger.Error(ferr)
+		w.WriteHeader(http.StatusNotFound)
 	}
 
 	marshaledResults, merr := json.Marshal(result)
 	if merr != nil {
 		logger.Error(ferr)
+		w.WriteHeader(http.StatusInternalServerError)
 	}
 
 	w.Write(marshaledResults)
