@@ -51,8 +51,8 @@ func TestSignupHandler(t *testing.T) {
 
 	SignupHandler(res, req, db.C("users"))
 
-	if res.Code != http.StatusForbidden {
-		t.Fatalf("Expected: %v Got: %v", http.StatusForbidden, res.Code)
+	if res.Code != 403 {
+		t.Fatalf("Expected: %v Got: %v", 403, res.Code)
 	}
 }
 
@@ -106,5 +106,42 @@ func TestSSOHandler(t *testing.T) {
 
 	if ssoRes.Code != 200 {
 		t.Fatalf("Unexpected response, Expected: 200 Got: %v\nResponse: %v", ssoRes.Code, ssoRes)
+	}
+}
+
+func GetToken(db *mgo.Database) string {
+	mU, mE := json.Marshal(User{Username: "test", Password: []byte("test")})
+	if mE != nil {
+		fmt.Println("Marshal Error")
+	}
+
+	req, _ := http.NewRequest("GET", "/user/login/", bytes.NewReader(mU))
+	res := httptest.NewRecorder()
+
+	LoginHandler(res, req, db.C("users"))
+
+	if res.Code != 200 {
+		fmt.Printf("Login failed. Expected: %v: Got: %v", "200", res.Code)
+	}
+
+	var umU User
+	umE := json.Unmarshal(res.Body.Bytes(), &umU)
+	if umE != nil {
+		fmt.Println("Unable to unmarshal response back into a user.")
+	}
+
+	return umU.Token
+}
+
+func TestGenerateToken(t *testing.T) {
+	db := initTestDB()
+
+	firstToken := GetToken(db)
+	secondToken := GetToken(db)
+
+	t.Log("Tokens generated")
+
+	if firstToken != secondToken {
+		t.Fatalf("Expected tokens to match instead firstToken: %s, secondToken %s", firstToken, secondToken)
 	}
 }

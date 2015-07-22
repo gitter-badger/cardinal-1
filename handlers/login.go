@@ -9,7 +9,6 @@ import (
 	"time"
 
 	logger "github.com/Sirupsen/logrus"
-	"github.com/chasinglogic/cardinal/cards"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 )
@@ -19,6 +18,7 @@ var (
 	// Storing sso info in memory to increase speed and security. Need to find a way to prevent "hijacking"
 	ssoExpires = make(map[string]time.Time)
 	sso        = make(map[string]string)
+	hasToken   = make(map[string]string)
 	keySize    = 32
 )
 
@@ -34,49 +34,56 @@ type User struct {
 	Username string `json:"username"`
 	Password []byte `json:"-"`
 	// The front-end will need to store this as a cookie
-	Token       string             `json:"token"`
-	DashItems   []DashItem         `json:"dashitems"`
-	Collections []cards.Collection `json:"collections"`
+	Token       string        `json:"token"`
+	DashItems   []DashItem    `json:"dashitems"`
+	Collections []interface{} `json:"collections"`
 }
 
 func generateToken(un string) (string, error) {
 	var token string
-	logger.Debug("Generating token for " + un)
+	var exists bool
+	logger.Info("Generating token for " + un)
 
-	unique := false
-	for !unique {
-		buffer := make([]byte, keySize)
-		_, err := rand.Read(buffer)
-		if err != nil {
-			return "", err
+	token, exists = hasToken[un]
+	if !exists {
+		unique := false
+		for !unique {
+			buffer := make([]byte, keySize)
+			_, err := rand.Read(buffer)
+			if err != nil {
+				return "", err
+			}
+
+			token = base64.URLEncoding.EncodeToString(buffer)
+			logger.Debug("Generated token: " + token)
+			_, exists := ssoExpires[token]
+
+			if !exists {
+				logger.Debug("Token was unique")
+				unique = true
+			}
+
+			logger.Debug("Token was not unique")
 		}
 
-		token = base64.URLEncoding.EncodeToString(buffer)
-		logger.Debug("Generated token: " + token)
-		_, exists := ssoExpires[token]
-
-		if !exists {
-			logger.Debug("Token was unique")
-			unique = true
-		}
-
-		logger.Debug("Token was not unique")
+		sso[token] = un
+		ssoExpires[token] = time.Now()
+		hasToken[un] = token
 	}
-
-	sso[token] = un
-	ssoExpires[token] = time.Now()
 
 	return token, nil
 }
 
 // This is meant to be run as a go-routine on a timer. Since we are storing sso tokens in memory we need to make sure
 // we aren't leaking memory like the Titanic
-func cleanOutSso() int {
+func cleanOutSSO() int {
 	var i = 0
 	for token := range sso {
 		if time.Since(ssoExpires[token]).Minutes() > 30 {
+			un := sso[token]
 			delete(ssoExpires, token)
 			delete(sso, token)
+			delete(hasToken, un)
 			i++
 		}
 	}
@@ -172,6 +179,7 @@ func SSOHandler(w http.ResponseWriter, r *http.Request, collection *mgo.Collecti
 	if exists && tokenNotExpired(token) {
 		var u User
 		collection.Find(bson.M{"username": un}).One(&u)
+		logger.Infof("SSO successful. Token: %s User: %s", token, u.Username)
 		marshaledU, merr := json.Marshal(u)
 		if merr != nil {
 			logger.Error(merr.Error())
