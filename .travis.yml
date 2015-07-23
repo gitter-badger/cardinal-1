@@ -1,10 +1,16 @@
 language: go
 
 go:
-    - 1.4
+  - 1.4
 
-install: 
-    - go get ./...
+install:
+  - echo "[database]" > config.toml
+  - echo "user = \"$MONGOUSER\"" >> config.toml
+  - echo "password = \"$MONGOPASS\"" >> config.toml
+  - echo "port = \"$MONGOPORT\"" >> config.toml
+  - echo "ip = \"$MONGOSERVER\"" >> config.toml
+  - go get -v -d ./...
 
-build: 
-    - go test ./...
+build:
+  - go test ./...
+

@@ -7,3 +7,5 @@ client/bower_components/*
 */*.log
 database_setup/dbconfig.json
 *#*#*
+.out
+cardinal
