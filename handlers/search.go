@@ -7,8 +7,8 @@ import (
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 
-	"github.com/ChasingLogic/cardinal/cards"
 	logger "github.com/Sirupsen/logrus"
+	"github.com/chasinglogic/cardinal/cards"
 )
 
 // CardSearch is an HTTP Handler which searches for a card. Takes the game and name of the card from the url
@@ -19,18 +19,20 @@ func CardSearch(w http.ResponseWriter, r *http.Request, db *mgo.Database) {
 
 	if game == "hearthstone" {
 		// Not quite ready for hearthstone
-		w.WriteHeader(500)
+		w.WriteHeader(http.StatusNotImplemented)
 	}
 
 	var result []cards.MagicCard
 	ferr := db.C(game).Find(bson.M{"name": &bson.M{"$regex": ".*" + searchTerm + ".*", "$options": "i"}}).All(&result)
 	if ferr != nil {
 		logger.Error(ferr)
+		w.WriteHeader(http.StatusNotFound)
 	}
 
 	marshaledResults, merr := json.Marshal(result)
 	if merr != nil {
 		logger.Error(ferr)
+		w.WriteHeader(http.StatusInternalServerError)
 	}
 
 	w.Write(marshaledResults)

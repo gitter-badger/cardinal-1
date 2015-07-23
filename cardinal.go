@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/ChasingLogic/cardinal/handlers"
+	"github.com/chasinglogic/cardinal/handlers"
 	"github.com/gorilla/mux"
 	"gopkg.in/mgo.v2"
 
@@ -143,6 +143,10 @@ func main() {
 
 	router.HandleFunc("/userAuth/signup", func(w http.ResponseWriter, r *http.Request) {
 		handlers.SignupHandler(w, r, userCollection)
+	}).Methods("POST")
+
+	router.HandleFunc("/api/v1/createCollection", func(w http.ResponseWriter, r *http.Request) {
+		handlers.CreateCollection(w, r, userCollection)
 	}).Methods("POST")
 
 	router.HandleFunc("/api/v1/cardSearch", func(w http.ResponseWriter, r *http.Request) {
