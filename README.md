@@ -1,4 +1,4 @@
-#Cardinal ![Image](https://travis-ci.org/ChasingLogic/cardinal.svg?branch=master)
+#Cardinal [![Build Status](https://travis-ci.org/ChasingLogic/cardinal.svg)](https://travis-ci.org/ChasingLogic/cardinal)
 This app has been a dream of mine for a long time. I'm a huge fan of card games of all types and always wanted an app that I could throw my card collections into and run reports on.
 
 ###How To Help
