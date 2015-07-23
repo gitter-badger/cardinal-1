@@ -9,6 +9,7 @@ install:
   - echo "password = \"$MONGOPASS\"" >> config.toml
   - echo "port = \"$MONGOPORT\"" >> config.toml
   - echo "ip = \"$MONGOSERVER\"" >> config.toml
+  - echo "name = \"$MONGODB\"" >> config.toml
   - go get -v -d ./...
 
 build:
