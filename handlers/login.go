@@ -113,11 +113,13 @@ func LoginHandler(w http.ResponseWriter, r *http.Request, collection *mgo.Collec
 	err := decoder.Decode(&u)
 	if err != nil {
 		logger.Error(err.Error())
+		w.WriteHeader(http.StatusInternalServerError)
 	}
 
 	derr := collection.Find(bson.M{"username": u.Username}).One(&udb)
 	if derr != nil {
 		logger.Error(derr.Error())
+		w.WriteHeader(http.StatusInternalServerError)
 	}
 
 	u.Password = hasher.Sum(u.Password)
@@ -125,6 +127,7 @@ func LoginHandler(w http.ResponseWriter, r *http.Request, collection *mgo.Collec
 		token, err := generateToken(u.Username)
 		if err != nil {
 			logger.Error(err.Error())
+			w.WriteHeader(http.StatusInternalServerError)
 		}
 
 		udb.Token = token
@@ -132,6 +135,7 @@ func LoginHandler(w http.ResponseWriter, r *http.Request, collection *mgo.Collec
 		marshaledU, merr := json.Marshal(udb)
 		if merr != nil {
 			logger.Error(merr.Error())
+			w.WriteHeader(http.StatusInternalServerError)
 		}
 
 		logger.Info("User " + u.Username + " has successfully logged in.")
@@ -153,6 +157,7 @@ func SignupHandler(w http.ResponseWriter, r *http.Request, collection *mgo.Colle
 	err := decoder.Decode(&u)
 	if err != nil {
 		logger.Error(err.Error())
+		w.WriteHeader(http.StatusInternalServerError)
 	}
 
 	u.Password = hasher.Sum(u.Password)
@@ -165,6 +170,7 @@ func SignupHandler(w http.ResponseWriter, r *http.Request, collection *mgo.Colle
 	marshaledU, merr := json.Marshal(u)
 	if merr != nil {
 		logger.Error(merr.Error())
+		w.WriteHeader(http.StatusInternalServerError)
 	}
 
 	logger.Info("User " + u.Username + " has successfully signed up.")
@@ -183,6 +189,7 @@ func SSOHandler(w http.ResponseWriter, r *http.Request, collection *mgo.Collecti
 		marshaledU, merr := json.Marshal(u)
 		if merr != nil {
 			logger.Error(merr.Error())
+			w.WriteHeader(http.StatusInternalServerError)
 		}
 
 		w.Write(marshaledU)
