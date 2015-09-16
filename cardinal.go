@@ -40,7 +40,7 @@ func initDB() {
 func loggerInit() (*os.File, logger.Level) {
 	var logFile *os.File
 	var fileErr error
-	filename := "cardcollector.out"
+	filename := "cardinal.out"
 
 	if _, err := os.Stat(filename); err == nil {
 		logFile, fileErr = os.OpenFile(filename, os.O_RDWR|os.O_APPEND, 0660)
