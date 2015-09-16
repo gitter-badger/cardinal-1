@@ -1,4 +1,6 @@
 #Cardinal [![Build Status](https://travis-ci.org/ChasingLogic/cardinal.svg)](https://travis-ci.org/ChasingLogic/cardinal)
+
+[![Join the chat at https://gitter.im/ChasingLogic/cardinal](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/ChasingLogic/cardinal?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 This app has been a dream of mine for a long time. I'm a huge fan of card games of all types and always wanted an app that I could throw my card collections into and run reports on.
 
 ###How To Help
